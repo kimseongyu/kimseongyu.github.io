@@ -3619,4 +3619,12 @@ body.search-is-visible {
   visibility: visible;
 }
 
+/* -------------------------------------------------------------------
+ * make my self
+ * ------------------------------------------------------------------- */
+
+img.mogaco{
+  height : 175px;
+  width : auto;
+}
 /*# sourceMappingURL=main.css.map */
