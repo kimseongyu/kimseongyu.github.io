@@ -2500,8 +2500,8 @@ input::-moz-focus-inner {
   background-image: url(../images/icons/social/icon-twitter.svg);
 }
 
-.header__social .ss-dribbble a::after {
-  background-image: url(../images/icons/social/icon-dribbble.svg);
+.header__social .ss-naver a::after {
+  background-image: url(../images/icons/social/icon-naver.png);
 }
 
 .header__social .ss-behance a::after {
@@ -2518,6 +2518,10 @@ input::-moz-focus-inner {
 
 .header__social .ss-rss a::after {
   background-image: url(../images/icons/social/icon-rss.svg);
+}
+
+.header__social .ss-github a::after {
+  background-image: url(../images/icons/social/icon-github.png);
 }
 
 /* -------------------------------------------------------------------
