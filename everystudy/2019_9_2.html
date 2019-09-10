@@ -156,43 +156,39 @@
                             <li class="date">Date : 2019/09/09</li>
                         </ul>
                     </div>
-                    <div class="entry__content">
-                        <p>
-                            github블로그 매일매일스터디 페이지와 Systemhacking페이지 개설<br>
-                            백준 1003번 문제 풀이 시도<br>
-                            <code>
-                                def fibonacci(x):
-        if x[0] == 0 :
-            x[1] = x[1] + 1
-            return x
-        elif x[0] == 1 :
-            x[2] = x[2] + 1
-            return x
-        else :
-            y = x
-            y[0] = y[0] - 1
-            z = x
-            z[0] = z[0] - 2
-            y = fibonacci(y)
-            z = fibonacci(z)
-            for i in range(3):
-                x[i] = y[i] + z[i]
-            return x
-
-def num(x):
-    a = [x,0,0]
-    fibonacci(a)
-    print(a[1],a[2])
-    
-x = input()
-x = int(x)
-for i in range(x):
-    y = input()
-    y = int(y)
-    num(y)
-                            </code>
-                        </p>
-                    </div>
+                    <p>github블로그 매일매일스터디 페이지와 Systemhacking페이지 개설<br>
+                        백준 1003번 문제 풀이 시도</p>
+                        <pre><code class='language-python' lang='python'>
+                        def fibonacci(x):
+                            if x[0] == 0 :
+                                x[1] = x[1] + 1
+                                return x
+                            elif x[0] == 1 :
+                                x[2] = x[2] + 1
+                                return x
+                            else :
+                                y = x
+                                y[0] = y[0] - 1
+                                z = x
+                                z[0] = z[0] - 2
+                                y = fibonacci(y)
+                                z = fibonacci(z)
+                                for i in range(3):
+                                    x[i] = y[i] + z[i]
+                                return x
+                        
+                        def num(x):
+                            a = [x,0,0]
+                            fibonacci(a)
+                            print(a[1],a[2])
+                            
+                        x = input()
+                        x = int(x)
+                        for i in range(x):
+                            y = input()
+                            y = int(y)
+                            num(y)
+                        </code></pre>
 
                 </article>
             </main>
