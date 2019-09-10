@@ -3,38 +3,155 @@
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
 <title></title></head>
-<body><p><span>**github블로그 매일매일스터디 페이지와 Systemhacking페이지 개설</span>
-<span>백준 1003번 문제 풀이 시도</span></p>
-<pre><code class='language-python' lang='python'>#1003
-def fibonacci(x):
-    if x[0] == 0 :
-        x[1] = x[1] + 1
-        return x
-    elif x[0] == 1 :
-        x[2] = x[2] + 1
-        return x
-    else :
-        y = x
-        y[0] = y[0] - 1
-        z = x
-        z[0] = z[0] - 2
-        y = fibonacci(y)
-        z = fibonacci(z)
-        for i in range(3):
-            x[i] = y[i] + z[i]
-        return x
-
-def num(x):
-    a = [x,0,0]
-    fibonacci(a)
-    print(a[1],a[2])
-    
-x = input()
-x = int(x)
-for i in range(x):
-    y = input()
-    y = int(y)
-    num(y)
+<body><h1>Markdown</h1>
+<h4>Markdown이란?</h4>
+<p>일반 텍스트 문서의 양식을 편집하는 문법이다. README 파일이나 온라인 문서, 혹은 일반 텍스트 편집기로 문서 양식을 편집할 때 쓰인다. 마크다운을 이용해 작성된 문서는 쉽게 HTML 등 다른 문서형태로 변환이 가능하다.</p>
+<h4>문법</h4>
+<ul>
+<li><p>헤더</p>
+<pre><code># h1
+## h2
+### h3
+#### h4
+##### h5
+###### h6
 </code></pre>
+<h1>h1</h1>
+<h2>h2</h2>
+<h3>h3</h3>
+<h4>h4</h4>
+<h5>h5</h5>
+<h6>h6</h6>
+</li>
+
+</ul>
+<ul>
+<li><p>글씨형태</p>
+<pre><code>*기울인 글씨*
+**굵은 글씨**
+***굵고 기울인 글씨***
+&lt;u&gt;밑줄있는 글씨&lt;/u&gt;
+~~취소선있는 글씨~~
+</code></pre>
+<p><em>기울인 글씨</em>
+<strong>굵은 글씨</strong>
+<strong><em>굵고 기울인 글씨</em></strong>
+<u>밑줄있는 글씨</u>
+<del>취소선있는 글씨</del></p>
+</li>
+
+</ul>
+<ul>
+<li><p>인용</p>
+<pre><code>&gt; 인용 
+&gt;&gt; 인용 인용
+&gt;&gt;&gt; 인용 인용 인용
+</code></pre>
+<blockquote><p>인용 </p>
+<blockquote><p>인용 인용</p>
+<blockquote><p>인용 인용 인용</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+
+</ul>
+<ul>
+<li><p>순서가 있는 목록</p>
+<pre><code>1. 첫번째
+3. 세번째
+2. 두번째
+</code></pre>
+<ol start='' >
+<li>첫번째</li>
+<li>세번째</li>
+<li>두번째</li>
+
+</ol>
+<p>순서가 달라도 내림차순으로 정렬된다.</p>
+</li>
+
+</ul>
+<ul>
+<li><p>순서가 없는 목록</p>
+<pre><code>* 순서
+	* 순서 순서
+		* 순서 순서 순서
+</code></pre>
+<ul>
+<li><p>순서</p>
+<ul>
+<li><p>순서 순서</p>
+<ul>
+<li>순서 순서 순서</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><p>코드</p>
+<pre><code>` 인라인 코드 `
+```
+코드블록
+```
+</code></pre>
+<p><code>인라인 코드</code></p>
+<pre><code>코드블록
+</code></pre>
+</li>
+
+</ul>
+<ul>
+<li><p>수평선</p>
+<pre><code>***
+---
+___
+</code></pre>
+<hr />
+<hr />
+<hr />
+</li>
+
+</ul>
+<ul>
+<li><p>링크</p>
+<pre><code>[ sun&#39;s gitblog ] : https://kimseongyu.github.io &quot;선규의 블로그&quot;
+</code></pre>
+<p>[ sun&#39;s gitblog ] : <a href='https://kimseongyu.github.io' target='_blank' class='url'>https://kimseongyu.github.io</a> &quot;선규의 블로그&quot;</p>
+</li>
+
+</ul>
+<ul>
+<li><p>이미지</p>
+<pre><code>[![이미지 이름](이미지url)](클릭시 링크)
+</code></pre>
+<p><a href='클릭시 링크'><img src='이미지url' alt='이미지 이름' referrerPolicy='no-referrer' /></a></p>
+</li>
+
+</ul>
+<ul>
+<li><p>표</p>
+<pre><code>표 | 표 | 표
+---|---|---
+표 | 표 | 표
+표 | 표 | 표
+</code></pre>
+<figure><table>
+<thead>
+<tr><th style='text-align:center;' >표</th><th style='text-align:center;' >표</th><th style='text-align:center;' >표</th></tr></thead>
+<tbody><tr><td style='text-align:center;' >표</td><td style='text-align:center;' >표</td><td style='text-align:center;' >표</td></tr><tr><td style='text-align:center;' >표</td><td style='text-align:center;' >표</td><td style='text-align:center;' >표</td></tr></tbody>
+</table></figure>
+</li>
+<li><p>주석</p>
+<pre><code>&lt;!-- 주석 처리 --&gt;
+</code></pre>
+<!-- 주석 처리 -->
+</li>
+
+</ul>
 </body>
 </html>
