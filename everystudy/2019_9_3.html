@@ -5,8 +5,8 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>Sun's blog</title>
-    <meta name="description" content="mogaco page">
+    <title>20191mogaco - sun's blog</title>
+    <meta name="description" content="2019 summer first mogacco">
     <meta name="author" content="kim seon gyu">
 
     <!-- mobile specific metas
@@ -25,14 +25,14 @@
 
     <!-- favicons
     ================================================== -->
-    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="manifest" href="site.webmanifest">
 
 </head>
 
-<body>
+<body class="ss-bg-white">
 
     <!-- preloader
     ================================================== -->
@@ -48,7 +48,7 @@
 
         <!-- site header
         ================================================== -->
-        <header class="s-header">
+        <header class="s-header header">
 
             <div class="header__top">
                 <div class="header__logo">
@@ -75,7 +75,7 @@
                 <a href="#0" class="header__search-trigger"></a>
                 <a href="#0" class="header__menu-toggle"><span>Menu</span></a>
 
-            </div> <!-- end header__top -->
+            </div>
 
             <nav class="header__nav-wrap">
 
@@ -85,7 +85,7 @@
                         <a href="#0" title="">Categories</a>
                         <ul class="sub-menu">
                         <li><a href="../mogaco/mogaco.html">모각코</a></li>
-                        <li class="current"><a href="everydaystudy.html"">매일매일스터디</a></li>
+                        <li class="current"><a href="everydaystudy.html">매일매일스터디</a></li>
                         </ul>
                     </li>
                     <li class="has-children">
@@ -126,72 +126,47 @@
 
         </header> <!-- end s-header -->
 
-        <div class="s-content">
+
+        <!-- site content
+        ================================================== -->
+        <div class="s-content content">
             
-            <div class="masonry-wrap">
-
-                <div class="masonry">
-    
-                    <div class="grid-sizer"></div>
-    
-                    <article class="masonry__brick entry format-standard animate-this">
-                            
-                        <div class="entry__thumb">
-                            <a href="2019_9_2.html" class="entry__thumb-link">
-                                <img src="../images/everydaystudy/20190912_003948.jpg" 
-                                        srcset="../images/everydaystudy/20190912_003948.jpg 1x, ../images/everydaystudy/20190912_003948.jpg 2x" alt="">
-                            </a>
-                        </div>
-                        <div class="entry__text">
-                            <div class="entry__header">
-    
-                                <h2 class="entry__title"><a href="2019_9_3.html">2019년 9월 3주차</a></h2>
-                                <div class="entry__meta">
-                                    <span class="entry__meta-date">
-                                        <a href="2019_9_3.html">Sep, 2019</a>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="entry__excerpt">
-                                <p>학교 축제 기간 이라서 내용이 부실할 수도 있음.</p>
-                            </div>
-                        </div>
-                    </article> <!-- end article -->
+            <div class="row">
+                <div class="column large-full">
+                    <nav class="pgn">
+                        <ul>
+                            <li><a class="pgn__num" href="#first">9/16</a></li>
+                            <li><a class="pgn__num" href="#second">9/17</a></li>
+                            <li><a class="pgn__num" href="#third">9/18</a></li>
+                            <li><a class="pgn__num" href="#fourth">9/19</a></li>
+                            <li><a class="pgn__num" href="#fiveth">9/20</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            
+            <main class="row content__page">
+                
+                <article class="column large-full entry format-gallery">
                     
-                    <article class="masonry__brick entry format-standard animate-this">
-                        <div class="entry__thumb">
-                            <a href="2019_9_2.html" class="entry__thumb-link">
-                                <img src="../images/everydaystudy/20190912_003948.jpg" 
-                                        srcset="../images/everydaystudy/20190912_003948.jpg 1x, ../images/everydaystudy/20190912_003948.jpg 2x" alt="">
-                            </a>
-                        </div>
-                        <div class="entry__text">
-                            <div class="entry__header">
-    
-                                <h2 class="entry__title"><a href="2019_9_2.html">2019년 9월 2주차</a></h2>
-                                <div class="entry__meta">
-                                    <span class="entry__meta-date">
-                                        <a href="2019_9_2.html">Sep, 2019</a>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="entry__excerpt">
-                                <p>9월 12일부터 9월 14일까지 추석</p>
-                            </div>
-                        </div>
-        
-                    </article> <!-- end article -->
-    
-                </div> <!-- end masonry -->
+                    <div class="content__page-header entry__header" id="first">
+                        <h1 class="display-1 entry__title">
+                        9월 16일 공부기록
+                    </h1>
+                        <ul class="entry__header-meta">
+                            <li class="contents">everyday study</li>
+                            <li class="date">Date : 2019/09/16</li>
+                        </ul>
+                    </div>
+                    
+                </article>
+            </main>
 
-            </div> <!-- end masonry-wrap -->
-        
         </div> <!-- end s-content -->
-
 
         <!-- footer
         ================================================== -->
-        <footer class="s-footer">
+        <footer class="s-footer footer">
             <div class="row">
                 <div class="column large-full footer__content">
                     <div class="footer__copyright">
@@ -203,7 +178,6 @@
 
             <div class="go-top">
                 <a class="smoothscroll" title="Back to Top" href="#top"></a>
-            </div>
         </footer>
 
     </div> <!-- end s-wrap -->
@@ -216,3 +190,4 @@
     <script src="../js/main.js"></script>
 
 </body>
+</html>
