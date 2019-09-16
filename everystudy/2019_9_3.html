@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
+
 <head>
 
     <!--- basic page needs
@@ -58,18 +59,19 @@
                 </div>
 
                 <div class="header__search">
-    
+
                     <form role="search" method="get" class="header__search-form" action="#">
                         <label>
                             <span class="hide-content">Search for:</span>
-                            <input type="search" class="header__search-field" placeholder="Type Keywords" value="" name="s" title="Search for:" autocomplete="off">
+                            <input type="search" class="header__search-field" placeholder="Type Keywords" value=""
+                                name="s" title="Search for:" autocomplete="off">
                         </label>
                         <input type="submit" class="header__search-submit" value="Search">
                     </form>
-        
+
                     <a href="#0" title="Close Search" class="header__search-close">Close</a>
-        
-                </div>  <!-- end header__search -->
+
+                </div> <!-- end header__search -->
 
                 <!-- toggles -->
                 <a href="#0" class="header__search-trigger"></a>
@@ -84,14 +86,14 @@
                     <li class="has-children">
                         <a href="#0" title="">Categories</a>
                         <ul class="sub-menu">
-                        <li><a href="../mogaco/mogaco.html">모각코</a></li>
-                        <li class="current"><a href="everydaystudy.html">매일매일스터디</a></li>
+                            <li><a href="../mogaco/mogaco.html">모각코</a></li>
+                            <li class="current"><a href="everydaystudy.html">매일매일스터디</a></li>
                         </ul>
                     </li>
                     <li class="has-children">
                         <a href="#0" title="">Blog Posts</a>
                         <ul class="sub-menu">
-                        <li><a href="../Systemhacking/Systemhacking.html">Systemhacking</a></li>
+                            <li><a href="../Systemhacking/Systemhacking.html">Systemhacking</a></li>
                         </ul>
                     </li>
                     <li><a href="../page-styles.html" title="">Styles</a></li>
@@ -130,7 +132,7 @@
         <!-- site content
         ================================================== -->
         <div class="s-content content">
-            
+
             <div class="row">
                 <div class="column large-full">
                     <nav class="pgn">
@@ -144,20 +146,102 @@
                     </nav>
                 </div>
             </div>
-            
+
             <main class="row content__page">
-                
+
                 <article class="column large-full entry format-gallery">
-                    
+
                     <div class="content__page-header entry__header" id="first">
                         <h1 class="display-1 entry__title">
-                        9월 16일 공부기록
-                    </h1>
+                            9월 16일 공부기록
+                        </h1>
                         <ul class="entry__header-meta">
                             <li class="contents">everyday study</li>
                             <li class="date">Date : 2019/09/16</li>
                         </ul>
                     </div>
+                    <div class="entry__content">
+                        <h1>컬렉션</h1>
+                        <h3>컬렉션이란?</h3>
+                        <p>자바에서 자료구조를 구현한 클래스, java.util 패키제이 존재</p>
+                        <h3>컬렉션의 종류</h3>
+                        <ul>
+                            <li>Collection : 모든 자료구조의 부모 인터페이스로서 객체의 모임을 나타냄</li>
+                            <li>Set : 집합(중복된 원소를 가지지 않는)을 나타내는 자료구조</li>
+                            <li>List : 순서가 있는 자료구조로 중복된 원소를 가질 수 있음</li>
+                            <li>Map : 키와 값들이 연결되어 있는 사전과 같은 자료구조</li>
+                            <li>Queue : 들어온 순서대로 나가는 자료구조</li>
+
+                        </ul>
+                        <p>&nbsp;</p>
+                        <h3>List</h3>
+                        <ul>
+                            <li>
+                                ArrayList : array와 같은 형태로 타입 매개변수를 가지는 제네릭 클래스로 제공된다.
+                            </li>
+                            <li>
+                                LinkedList : 각 원소를 링크로 연결하고 각 원소들은 다음 원소를 가리키는 링크를 저장한다.
+                            </li>
+                            <p>add() : 데이터를 위치를 지정하여 삽입할 수 있다.<br>
+                                set() : 특정한 위치에 있는 원소를 바꿀때 사용한다.<br>
+                                remove() : 데이터를 삭제할 때 사용한다.<br>
+                                get() : 저장된 객체를 가져올 때 사용한다.<br>
+                                indexOf() : 저장된 데이터의 위치를 반환함. 같은 데이터가 여러개 저장되어 있으면 앞에 있는 데이터의 위치가 반환됨.</p>
+
+                        </ul>
+                        <p>&nbsp;</p>
+                        <h3>Set</h3>
+                        <ul>
+                            <li>HashSet : 해쉬 테이블에 원소를 저장하기 때문에 성능면에서 가장 우수하지만 원소들의 순서가 일정하지 않다.</li>
+                            <li>TreeSet : 레드-블랙 트리에 원소를 저장하여 값에 따라 순서가 결정되지만 HastSet보다는 느리다.</li>
+                            <li>LinkedHashSet : 해쉬 테이블과 연결리스트를 합친 것으로 원소들의 순서는 삽입되었던 순서와 같다. </li>
+
+                        </ul>
+                        <p>&nbsp;</p>
+                        <h3>Queue</h3>
+                        <ul>
+                            <li>
+                                <p>우선순위 큐 : 원소들이 무작위로 삽입되었더라도 정렬된 상태로 원소들을 추출한다.<br>
+                                    이진트리의 일종인 heap이라는 자료구조를 내부적으로 사용한다.<br>
+                                    poll(): 큐의 처음에 있는 원소를 가져오고 제거한다.<br>
+                                    peek(): 큐의 처음에 있는 원소를 제거하지 않고 가져온다.</p>
+                            </li>
+
+                        </ul>
+                        <p>&nbsp;</p>
+                        <h3>Map</h3>
+                        <ul>
+                            <li>
+                                HashMap : 해싱 테이블에 데이터를 저장
+                            </li>
+                            <li>
+                                TreeMap : 탐색 트리에 데이터를 저장한다.
+                            </li>
+                            <li>
+                                LinkedHashMap : 해쉬 테이블과 연결리스트를 합친 Map이다.
+                            </li>
+                            <p>put()을 사용하여 데이터를 저장하고 entrySet()을 사용하여 저장된 데이터를 방문한다.</p>
+
+                        </ul>
+                        <p>&nbsp;</p>
+                        <h3>Collections 클래스</h3>
+                        <ul>
+                            <li>정렬(Sorting) : List 인터페이스를 구현하는 컬렉션에 대하여 정렬을 수행한다.</li>
+                            배열을 정렬 할때는 asList()를 사용하여 리스트로 변경해야 한다.<br>
+                            <li>섞기(Shuffling) : shuffle() 순서를 무작위로 만든다.</li>
+                            <li>탐색(Searching) : binarySearch()를 사용하여 리스트 안에서 원하는 원소를 찾는다.</li>
+
+                        </ul>
+                        <p>&nbsp;</p>
+                        <h3>반복자(iterator)</h3>
+                        <ul>
+                            <li>hasNext() : 아직 방문하지 않은 원소가 있으면 true를 반환</li>
+                            <li>next() : 다음 원소를 반환</li>
+                            <li>remove() : 최근에 반환된 원소를 삭제</li>
+                        </ul>
+                    </div>
+
+                    <hr>
                     
                 </article>
             </main>
@@ -170,7 +254,7 @@
             <div class="row">
                 <div class="column large-full footer__content">
                     <div class="footer__copyright">
-                        <span>© Copyright Typerite 2019</span> 
+                        <span>© Copyright Typerite 2019</span>
                         <span>Design by <a href="https://www.styleshout.com/">StyleShout</a></span>
                     </div>
                 </div>
@@ -190,4 +274,5 @@
     <script src="../js/main.js"></script>
 
 </body>
+
 </html>
