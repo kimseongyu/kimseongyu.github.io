@@ -161,6 +161,7 @@
                         </ul>
                     </div>
                     <div class="entry__content">
+                        <p>추석 때 논다고 컴프2 예습을 못해서 복습을 해야겠다.</p>
                         <h1>컬렉션</h1>
                         <h3>컬렉션이란?</h3>
                         <p>자바에서 자료구조를 구현한 클래스, java.util 패키제이 존재</p>
@@ -241,8 +242,130 @@
                         </ul>
                     </div>
 
-                    <hr>
+                    <hr><br>
                     
+                    <div class="content__page-header entry__header" id="second">
+                        <h1 class="display-1 entry__title">
+                            9월 17일 공부기록
+                        </h1>
+                        <ul class="entry__header-meta">
+                            <li class="contents">everyday study</li>
+                            <li class="date">Date : 2019/09/17</li>
+                        </ul>
+                    </div>
+                    <div class="entry__content">
+                        <p>컴프2 과제</p>
+                        <h3>과제1</h3>
+                        <pre class="prettyprint prettyprinted" style>
+                            <code lang='python'>
+package lab03;
+import java.util.*;
+
+class StringOneHot{
+	private String str;
+	Set<String> strSet = new LinkedHashSet<>();
+	Map<Integer, String> strMap = new HashMap<Integer, String>();
+	Map<String,ArrayList<Integer>> strOneHotVec = new HashMap<String,ArrayList<Integer>>();
+	public StringOneHot(String str) {
+		this.str = str;
+		for(int i = 0; i < str.length(); i++) {
+			strSet.add(str.substring(i, i+1));
+			
+		}
+		Iterator<String> it = strSet.iterator();
+		int key = 0;
+		while(it.hasNext()) {
+			strMap.put(key, it.next());
+			key++;
+		}
+		Iterator<String> that = strSet.iterator();
+		int k = 0;
+		while(that.hasNext()) {
+			ArrayList<Integer> list = new ArrayList<Integer>();
+			list.clear();
+			for(int j = 0; j < strSet.size() ;j++) {
+				list.add(0);
+			}
+			list.set(k, 1);
+			strOneHotVec.put(that.next(),list);
+			k++;
+		}
+		
+	}
+	public String getString() {
+		return str;
+	}
+	public Set<String> getStrSet(){
+		return strSet;
+	}
+	public Map<Integer, String> getStrMap(){
+		return strMap;
+	}
+	public Map<String,ArrayList<Integer>> getStrOneHotVec(){
+		return strOneHotVec;
+	}
+}
+
+public class StringOneHotTest {
+	public static void main(String[] args) {
+		String str = "Hello";
+		StringOneHot soh = new StringOneHot(str);
+		System.out.println("문자열: " + soh.getString());
+		System.out.println("문자열 Set: " + soh.getStrSet());
+		System.out.println("문자열 Map: " + soh.getStrMap());
+		System.out.println("문자열 One-hot Vector: " + soh.getStrOneHotVec());
+		
+		System.out.println("One-hot Vector로 나타낸" + soh.getString());
+		for(int i = 0; i < str.length(); i++) {
+			System.out.println(soh.getStrOneHotVec().get(str.substring(i, i+1)));
+		}
+	}
+}                          
+                            </code>
+                        </pre>
+                        <h3>과제2</h3>
+                        <pre class="prettyprint prettyprinted" style>
+                                <code lang='python'>
+package lab03;
+import java.util.*;
+
+public class GradeTOScore {
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		ArrayList<String> gradeList = new ArrayList<>();
+		Map<String,Double> changegrade = new HashMap<>();
+		changegrade.put("A",4.0);
+		changegrade.put("B",3.0);
+		changegrade.put("C",2.0);
+		changegrade.put("D",1.0);
+		changegrade.put("F",0.0);
+		String grade;
+		while(true) {
+			System.out.print("학점을 입력하세요(A, B, C, D, F):");
+			input.hasNextLine();
+			grade = input.nextLine();
+			if(grade.length() == 0) { break; }
+			if(64 < grade.toUpperCase().charAt(0) && grade.toUpperCase().charAt(0)< 71 && grade.length() == 1) {
+				if(grade.toUpperCase().charAt(0) != 69) {
+					gradeList.add(grade.toUpperCase());
+				}else {
+					System.out.println("잘못된 학점 입력입니다.");
+				}
+			}else {
+				System.out.println("잘못된 학점 입력입니다.");
+			}
+		}
+		System.out.println("------------------------------");
+		gradeList = new ArrayList<>(new HashSet<>(gradeList));
+		for(String s : gradeList) {
+			System.out.println("저장된 학점:" + s + " 변환한 점수: " + changegrade.get(s));
+		}
+	}
+}
+                                </code>
+                            </pre>
+                    </div>
+
                 </article>
             </main>
 
