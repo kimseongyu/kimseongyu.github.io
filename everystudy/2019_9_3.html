@@ -477,6 +477,48 @@ public class GradeTOScore {
                                 referrerPolicy='no-referrer' /></p>
                     </div>
 
+                    <hr>
+
+                    <div class="content__page-header entry__header" id="third">
+                        <h1 class="display-1 entry__title">
+                            9월 19일 공부기록
+                        </h1>
+                        <ul class="entry__header-meta">
+                            <li class="contents">everyday study</li>
+                            <li class="date">Date : 2019/09/19</li>
+                        </ul>
+                    </div>
+                    <div class="entry__content">
+                        <p>백준 1171번 문제 풀기를 시도했다. 풀지는 못 했지만 나중에 꼭 풀어야 겠다.</p>
+                        <pre class="prettyprint prettyprinted" style>
+                            <code lang='python'>
+#1171
+N = input()
+N = int(N)
+x = [0]
+y = [0]
+z = 0
+for i in range(N-1):
+    x = x + [0]
+    y = y + [0]
+for i in range(N):
+    x[i], y[i] = input().split()
+    x[i] = int(x[i])
+    y[i] = int(y[i])
+for a in range(N):
+    for b in range(N):
+        for c in range(N):
+            if x[a] == x[b] != x[c] & y[a] != y[b] == y[c]:
+                z = z +1
+            elif x[a] != x[b] == x[c] & y[a] == y[b] != y[c]:
+                z = z +1
+            if x[a]+x[b] == 2 *x [c] & (x[c]-x[a])**2 + (y[c]-y[a])**2 + (x[c]-x[b])**2 + (y[c]-y[b])**2 == (x[b]-x[a])**2 + (y[b]-y[a])**2:
+                z = z + 1
+print(int(z/2))
+                            </code>
+                        </pre>
+                    </div>
+
                 </article>
             </main>
 
