@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>20191mogaco - sun's blog</title>
+    <meta name="description" content="2019 everydaystudy 10-1">
+    <meta name="author" content="kim seon gyu">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/vendor.css">
+    <link rel="stylesheet" href="../css/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="../js/modernizr.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+
+</head>
+
+<body class="ss-bg-white">
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader" class="dots-fade">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <div id="top" class="s-wrap site-wrapper">
+
+        <!-- site header
+        ================================================== -->
+        <header class="s-header header">
+
+            <div class="header__top">
+                <div class="header__logo">
+                    <a class="site-logo" href="../index.html">
+                        <img src="../images/logo.svg" alt="Homepage">
+                    </a>
+                </div>
+
+                <div class="header__search">
+
+                    <form role="search" method="get" class="header__search-form" action="#">
+                        <label>
+                            <span class="hide-content">Search for:</span>
+                            <input type="search" class="header__search-field" placeholder="Type Keywords" value=""
+                                name="s" title="Search for:" autocomplete="off">
+                        </label>
+                        <input type="submit" class="header__search-submit" value="Search">
+                    </form>
+
+                    <a href="#0" title="Close Search" class="header__search-close">Close</a>
+
+                </div> <!-- end header__search -->
+
+                <!-- toggles -->
+                <a href="#0" class="header__search-trigger"></a>
+                <a href="#0" class="header__menu-toggle"><span>Menu</span></a>
+
+            </div>
+
+            <nav class="header__nav-wrap">
+
+                <ul class="header__nav">
+                    <li><a href="../index.html" title="">Home</a></li>
+                    <li class="has-children">
+                        <a href="#0" title="">Categories</a>
+                        <ul class="sub-menu">
+                            <li><a href="../mogaco/mogaco.html">모각코</a></li>
+                            <li class="current"><a href="everydaystudy.html">매일매일스터디</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-children">
+                        <a href="#0" title="">Blog Posts</a>
+                        <ul class="sub-menu">
+                            <li><a href="../Systemhacking/Systemhacking.html">Systemhacking</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../page-styles.html" title="">Styles</a></li>
+                    <li><a href="../page-about.html" title="">About</a></li>
+                    <li><a href="../page-contact.html" title="">Contact</a></li>
+                </ul> <!-- end header__nav -->
+
+                <ul class="header__social">
+                    <li class="ss-facebook">
+                        <a href="https://www.facebook.com/profile.php?id=100010493671942">
+                            <span class="screen-reader-text">Facebook</span>
+                        </a>
+                    </li>
+                    <li class="ss-twitter">
+                        <a href="#0">
+                            <span class="screen-reader-text">Twitter</span>
+                        </a>
+                    </li>
+                    <li class="ss-github">
+                        <a href="https://github.com/kimseongyu">
+                            <span class="screen-reader-text">Github</span>
+                        </a>
+                    </li>
+                    <li class="ss-naver">
+                        <a href="https://blog.naver.com/kskksk0925">
+                            <span class="screen-reader-text">Naver</span>
+                        </a>
+                    </li>
+                </ul>
+
+            </nav> <!-- end header__nav-wrap -->
+
+        </header> <!-- end s-header -->
+
+
+        <!-- site content
+        ================================================== -->
+        <div class="s-content content">
+
+            <div class="row">
+                <div class="column large-full">
+                    <nav class="pgn">
+                        <ul>
+                            <li><a class="pgn__num" href="#first">9/30</a></li>
+                            <li><a class="pgn__num" href="#second">10/01</a></li>
+                            <li><a class="pgn__num" href="#third">10/02</a></li>
+                            <li><a class="pgn__num" href="#fourth">10/03</a></li>
+                            <li><a class="pgn__num" href="#fiveth">10/04</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <main class="row content__page">
+
+                <article class="column large-full entry format-gallery">
+
+                    <div class="content__page-header entry__header" id="first">
+                        <h1 class="display-1 entry__title">
+                            9월 30일 공부기록
+                        </h1>
+                        <ul class="entry__header-meta">
+                            <li class="contents">everyday study</li>
+                            <li class="date">Date : 2019/09/30</li>
+                        </ul>
+                    </div>
+                    <div class="entry__content">
+                        <h1>컴프2 과제와 선형대수 정리</h1>
+                        <h3>컴프2 과제</h3>
+                        <p>LinkedList를 직접 구현해보는 과제를 하였다.</p>
+                        <pre><code class='language-java' lang='java'>
+public class LinkedList<T> implements List<T>{
+    private class Node<E>{
+        private E data;
+        private Node<E> next;
+        
+        public Node(E input) {
+            this.data = input;
+            this.next = null;
+        }
+        
+        @Override
+        public String toString() {
+            return String.valueOf(this.data);
+        }
+    }
+    
+    private Node<T> head;
+    private Node<T> tail;
+    private int size = 0;
+    
+    @Override
+    public String toString() {
+        if(head == null)
+            return "[]";
+        Node<T> temp = head;
+        StringBuilder str = new StringBuilder("[");
+        while(temp.next != null) {
+            str.append(temp.data + ", ");
+            temp = temp.next;
+        }
+        str.append(temp.data);
+        return new String(str + "]");
+    }
+    
+    @Override
+    public int size() {
+        return size;
+    }
+    
+    @Override
+    public boolean isEmpty() {
+        return size == 0;
+    }
+    
+    @Override
+    public boolean addFirst(T element) {
+        Node<T> newNode = new Node<>(element);
+        newNode.next = head;
+        head = newNode;
+        size++;
+        if(head.next == null)
+            tail = head;
+        return true;
+    }
+    
+    @Override
+    public boolean addLast(T element) {
+        if(isEmpty())
+            addFirst(element);
+        else {
+            Node<T> newNode = new Node<>(element);
+            tail.next = newNode;
+            tail = newNode;
+            size++;
+        }
+        return true;
+    }
+    
+    private Node<T> node(int index){
+        Node<T> x = head;
+        for(int i =0; i < index; i++)
+            x = x.next;
+        return x;
+    }
+    
+    @Override
+    public boolean add(int index, T element) {
+        if(index < 0 || index > size)
+            throw new IndexOutOfBoundsException();
+        if(index == 0) {
+            addFirst(element);
+            
+        } else {
+            Node<T> temp1 = node(index - 1);
+            Node<T> temp2 = temp1.next;
+            Node<T> newNode = new Node<>(element);
+            temp1.next = newNode;
+            newNode.next = temp2;
+            size++;
+            if(newNode.next == null) {
+                tail = newNode;
+            }
+        }
+        return true;
+    }
+    
+    @Override
+    public T removeFirst() {
+        Node<T> temp = head;
+        head = temp.next;
+        T returnData = temp.data;
+        temp = null;
+        size--;
+        return returnData;
+    }
+    
+    @Override
+    public T removeLast() {
+        return remove(size - 1);
+    }
+    
+    @Override
+    public T remove(int index) {
+        if(index < 0 || index >= size)
+            throw new IndexOutOfBoundsException();
+        if(index == 0)
+            return removeFirst();
+        Node<T> temp = node(index - 1);
+        Node<T> nodeToDelete = temp.next;
+        temp.next = temp.next.next;
+        T returnData = nodeToDelete.data;
+        if(nodeToDelete == tail)
+            tail = temp;
+        nodeToDelete = null;
+        size--;
+        return returnData;
+    }
+    
+    @Override
+    public T get(int index) {
+        if(index < 0 || index >= size)
+            throw new IndexOutOfBoundsException();
+        return node(index).data;
+    }
+    
+    @Override
+    public int indexOf(T element) {
+        for(int i = 0; i < size; i++) {
+            Node<T> temp = node(i);
+            if(element.equals(temp.data))
+                return i;
+        }
+        return -1;
+    }
+    
+    @Override
+    public T set(int index, T element) {
+        if(index < 0 || index > size)
+            throw new IndexOutOfBoundsException();
+        Object obj = node(index);
+        Node<T> temp1 = node(index - 1);
+        Node<T> temp2 = node(index + 1);
+        Node<T> newNode = new Node<>(element);
+        temp1.next = newNode;
+        newNode.next = temp2;
+        if(newNode.next == null) {
+            tail = newNode;
+        }
+        return (T)obj;
+    }
+    
+    public class ListIterator<T> implements Iterator<T>{
+        private int nextIndex;
+        private Node temp1;
+        private Node temp2;
+        
+        private ListIterator() {
+            this.nextIndex = 0;
+            temp2 = head;
+        }
+        
+        public boolean hasNext() {
+            return nextIndex < size();
+        }
+        
+        public T next() {
+            temp1 = temp2;
+            temp2 = temp2.next;
+            nextIndex++;
+            return (T)temp1;
+        }
+    }
+    
+    @Override
+    public Iterator<T> iterator(){
+        return new ListIterator();
+    }
+}
+                        </code></pre>
+                        <h3>선형대수 정리</h3>
+                        <p><img src='../images/everydaystudy/20190930_230618.jpg'
+                            alt='20190930_230618' referrerPolicy='no-referrer' /></p>
+                    <p><img src='../images/everydaystudy/20190930_230622.jpg'
+                            alt='20190924_121957' referrerPolicy='no-referrer' /></p>
+                    </div>
+
+                    <hr><br>
+
+                </article>
+            </main>
+
+        </div> <!-- end s-content -->
+
+        <!-- footer
+        ================================================== -->
+        <footer class="s-footer footer">
+            <div class="row">
+                <div class="column large-full footer__content">
+                    <div class="footer__copyright">
+                        <span>© Copyright Typerite 2019</span>
+                        <span>Design by <a href="https://www.styleshout.com/">StyleShout</a></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"></a>
+        </footer>
+
+    </div> <!-- end s-wrap -->
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/plugins.js"></script>
+    <script src="../js/main.js"></script>
+
+</body>
+
+</html>
