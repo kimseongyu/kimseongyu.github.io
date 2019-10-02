@@ -3,84 +3,19 @@
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
 <title></title></head>
-<body><p>컴퓨터 프로그래밍2 5주차 이론 예습</p>
-<h1>연결리스트를 이용한 리스트 구현</h1>
-<ol>
-<li><p>연결노드 : 인덱스 배열과 데이터 배열의 상대적인 위치는 일치하므로 이들을 데이터-주소쌍의 단일 배열로 표현</p>
-<p>원소에 참조를 위한 객체 사용 : Node 객체의 시퀀스로 생각 가능(배열 대신에 단일 start 참조만을 유지)</p>
-<pre><code class='language-java' lang='java'>Node start = new Node(22); //start의 초기화
-start.next = new Node(11); //노드의 추가
-start.next.next = new Node(33);
-</code></pre>
-<pre><code class='language-java' lang='java'>start = new Node(22);
-Node p = start; //변수 p(포인터)를 사용하여 노드를 순회
-p.next = new Node(11);
-p = p.next;
-p.next = new Node(33);
-p = p.next;
-</code></pre>
-<pre><code class='language-java' lang='java'>for(Node p = start; p != null; p = p.next) //연결 리스트를 이용한 루프문
-</code></pre>
-<p>&nbsp;</p>
-</li>
-
-</ol>
-<ol start='2' >
-<li><p>연결리스트에 대한 원소 삽입 : 삽입 과정의 단순화를 위해 2-인자 노드 생성자 추가</p>
-<p>(노드의 생성과 삽입을 한꺼번에 수행할 수 있도록 해줌)</p>
-<h6>삽입과정</h6>
-<ol>
-<li>새로운 노드 앞에 놓일 리스트 노드 p 발견</li>
-<li>새로운 노드를 생성해 부착</li>
-
-</ol>
-</li>
-
-</ol>
-<p>&nbsp;</p>
-<ol start='3' >
-<li><p>리스트의 앞에 삽입</p>
-<p>문제 : 첫번째 노드로 삽입 시 새로운 노드 앞에 나올 노드가 결여되어 잘못된 위치에 삽입됨</p>
-<p>해결방법</p>
-<ol>
-<li>연결 리스트의 구조를 변경하여 첫 번째 데이터노드 앞에 빈 헤드 노드를 유지</li>
-<li>메소드를 수정하여 특별한 경우를 별도로 처리하도록 한다.</li>
-
-</ol>
-</li>
-
-</ol>
-<p>&nbsp;</p>
-<ol start='4' >
-<li><p>정렬된 연결리스트에서의 삭제</p>
-<p>delete()메소드 : 1. 원소발견 2. 삭제</p>
-</li>
-
-</ol>
-<p>&nbsp;</p>
-<ol start='5' >
-<li><p>중첩클래스</p>
-<ul>
-<li><p>Java의 클래스 멤버 : 필드, 생성자, 메소드, 인터페이스, 또 다른 클래스 등</p>
-</li>
-<li><p>중첩 클래스 : 다른 클래스가 멤버인 클래스</p>
-<p>클래스 B가 클래스 A 내부에서만 사용될 때 B는 A 안에 중첩되어야 한다.</p>
-</li>
-
-</ul>
-</li>
-
-</ol>
-<p>&nbsp;</p>
-<ol start='6' >
-<li><p>사례 연구 : 임의의 긴 정수</p>
-<ul>
-<li>19자리 이상의 정수가 필요할 때 이를 허용하는 java.math.BigInteger사용</li>
-<li>연결리스트를 이용하여 이러한 정수 객체 구축 가능</li>
-
-</ul>
-</li>
-
-</ol>
+<body><h1>HITCON-Training lab01풀이 시도</h1>
+<p>아르고스 스터디팀 PWN2FUN팀에서 Lab01번 문제를 푸려고 한다.</p>
+<p><img src='C:\Users\ksk85\Desktop\대학교\github\kimseongyu.github.io\images\everydaystudy\hitcon_lab1_sourcecode.GIF' alt='' referrerPolicy='no-referrer' /></p>
+<p>lab 01번의 소스 코드이다. magic에 들어갈 숫자를 맞추면 풀 수 있을거 같이 생겼다.</p>
+<p><img src='C:\Users\ksk85\Desktop\대학교\github\kimseongyu.github.io\images\everydaystudy\hitcon_lab1_compile.GIF' alt='hitcon_lab1_compile' referrerPolicy='no-referrer' /></p>
+<p>32bit 환경에서 컴파일을 하였다.</p>
+<p><img src='C:\Users\ksk85\Desktop\대학교\github\kimseongyu.github.io\images\everydaystudy\hitcon_lab1_mainfnc.GIF' alt='hitcon_lab1_mainfnc' referrerPolicy='no-referrer' /></p>
+<p><img src='C:\Users\ksk85\Desktop\대학교\github\kimseongyu.github.io\images\everydaystudy\hitcon_lab1_getflagfnc.GIF' alt='hitcon_lab1_getflagfnc' referrerPolicy='no-referrer' /></p>
+<p>문제의 main함수와 get_flag함수를 gdb-peda로 한번 까보아서 살펴 보았다.</p>
+<p><img src='C:\Users\ksk85\Desktop\대학교\github\kimseongyu.github.io\images\everydaystudy\hitcon_lab1_breakpoint.GIF' alt='hitcon_lab1_breakpoint' referrerPolicy='no-referrer' /></p>
+<p>적당해 보이는 부분에 브레이크포인트를 걸고 실행 보려는데 </p>
+<p><img src='C:\Users\ksk85\Desktop\대학교\github\kimseongyu.github.io\images\everydaystudy\hitcon_lab1_runfail.GIF' alt='' referrerPolicy='no-referrer' /></p>
+<p>바이너리 파일을 실행 시킬 수 없다고 한다.ㅠㅠ 64bit로 컴파일 하였을 땐 실행 되었는데ㅠㅠ</p>
+<p>내일 한 번 찾아보고 실행이 되도록 만들어야 겠다.</p>
 </body>
 </html>
