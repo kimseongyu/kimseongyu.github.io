@@ -3,19 +3,46 @@
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
 <title></title></head>
-<body><h1>HITCON-Training lab01풀이 시도</h1>
-<p>아르고스 스터디팀 PWN2FUN팀에서 Lab01번 문제를 푸려고 한다.</p>
-<p><img src='C:\Users\ksk85\Desktop\대학교\github\kimseongyu.github.io\images\everydaystudy\hitcon_lab1_sourcecode.GIF' alt='' referrerPolicy='no-referrer' /></p>
-<p>lab 01번의 소스 코드이다. magic에 들어갈 숫자를 맞추면 풀 수 있을거 같이 생겼다.</p>
-<p><img src='C:\Users\ksk85\Desktop\대학교\github\kimseongyu.github.io\images\everydaystudy\hitcon_lab1_compile.GIF' alt='hitcon_lab1_compile' referrerPolicy='no-referrer' /></p>
-<p>32bit 환경에서 컴파일을 하였다.</p>
-<p><img src='C:\Users\ksk85\Desktop\대학교\github\kimseongyu.github.io\images\everydaystudy\hitcon_lab1_mainfnc.GIF' alt='hitcon_lab1_mainfnc' referrerPolicy='no-referrer' /></p>
-<p><img src='C:\Users\ksk85\Desktop\대학교\github\kimseongyu.github.io\images\everydaystudy\hitcon_lab1_getflagfnc.GIF' alt='hitcon_lab1_getflagfnc' referrerPolicy='no-referrer' /></p>
-<p>문제의 main함수와 get_flag함수를 gdb-peda로 한번 까보아서 살펴 보았다.</p>
-<p><img src='C:\Users\ksk85\Desktop\대학교\github\kimseongyu.github.io\images\everydaystudy\hitcon_lab1_breakpoint.GIF' alt='hitcon_lab1_breakpoint' referrerPolicy='no-referrer' /></p>
-<p>적당해 보이는 부분에 브레이크포인트를 걸고 실행 보려는데 </p>
-<p><img src='C:\Users\ksk85\Desktop\대학교\github\kimseongyu.github.io\images\everydaystudy\hitcon_lab1_runfail.GIF' alt='' referrerPolicy='no-referrer' /></p>
-<p>바이너리 파일을 실행 시킬 수 없다고 한다.ㅠㅠ 64bit로 컴파일 하였을 땐 실행 되었는데ㅠㅠ</p>
-<p>내일 한 번 찾아보고 실행이 되도록 만들어야 겠다.</p>
+<body><pre><code class='language-c' lang='c'>#include &lt;stdio.h&gt;
+#include &lt;unistd.h&gt;
+
+void get_flag(){
+        int fd ;
+        int password;
+        int magic ;
+        char key[] = &quot;Do_you_know_why_my_teammate_Orange_is_so_angry???&quot;;
+        char cipher[] = {7, 59, 25, 2, 11, 16, 61, 30, 9, 8, 18, 45, 40, 89, 			10, 0, 30, 22, 0, 4, 85, 22, 8, 31, 7, 1, 9, 0, 126, 28, 62, 10, 			30, 11, 107, 4, 66, 60, 44, 91, 49, 85, 2, 30, 33, 16, 76, 30, 66};
+        fd = open(&quot;/dev/urandom&quot;,0);
+        read(fd,&amp;password,4);
+        printf(&quot;Give me maigc :&quot;);
+        scanf(&quot;%d&quot;,&amp;magic);
+        if(password == magic){
+                for(int i = 0 ; i &lt; sizeof(cipher) ; i++){
+                        printf(&quot;%c&quot;,cipher[i]^key[i]);
+                }
+        }
+}
+
+int main(){
+        setvbuf(stdout,0,2,0);
+        get_flag();
+        return 0 ;
+}
+</code></pre>
+<p>lab01번 sysmagic파일의 소스코드이다.  get_flag 함수의 if문의 조건을 만족시켜 if문 안의 코드를 실행시키면 풀 수 있을것 같으니 gdb로 어셈블리어를 보자.</p>
+<pre><code class='language-assembly' lang='assembly'>0x00000836 &lt;+393&gt;:	call   0x550 &lt;__isoc99_scanf@plt&gt;
+0x0000083b &lt;+398&gt;:	add    esp,0x10
+0x0000083e &lt;+401&gt;:	mov    edx,DWORD PTR [ebp-0x80]
+0x00000841 &lt;+404&gt;:	mov    eax,DWORD PTR [ebp-0x7c]
+0x00000844 &lt;+407&gt;:	cmp    edx,eax
+0x00000846 &lt;+409&gt;:	jne    0x884 &lt;get_flag+471&gt;
+0x00000848 &lt;+411&gt;:	mov    DWORD PTR [ebp-0x78],0x0
+0x0000084f &lt;+418&gt;:	jmp    0x87c &lt;get_flag+463&gt;
+</code></pre>
+<p>get_flag함수의 scnaf와 if문의 assembly어이다.</p>
+<p><img src='C:\Users\ksk85\Desktop\대학교\github\kimseongyu.github.io\images\Systemhacking\HITCON\lab1.1.GIF' alt='lab1.1' referrerPolicy='no-referrer' /></p>
+<p>if문의 조건인 +407에 브레이크 포인트를 걸고 실행 시켜 보았다.</p>
+<p><img src='C:\Users\ksk85\Desktop\대학교\github\kimseongyu.github.io\images\Systemhacking\HITCON\lab1.2.GIF' alt='lab1.2' referrerPolicy='no-referrer' /></p>
+<p>password인 edx에는 쓰레기값이 들어가 있었고 magic인 eax에는 내가 입력한 1234가 들어가 있었다. edx의 쓰레기값을 없애고 1234를 채워 넣어 조건이 참이 되게 만들었다. 그리고 다시 프로그램을 진행시켜 CTF{debugger_1s_so_p0werful_1n_dyn4m1c_4n4lySis!}를 띄워 프로그램을 성공적으로 실해시켰다.</p>
 </body>
 </html>
