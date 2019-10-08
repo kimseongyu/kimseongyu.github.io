@@ -191,21 +191,64 @@ public class SequentialSearchTest {
                         </code></pre>
                         <h3>이진탐색</h3>
                         <pre><code class='language-java' lang='java'>
-public class BinarySearchTest {
-    public static <T> int binarySearch(ArrayList<? extends Comparable<T>> list, T target, int begin, int end) {
-        int middle = (int)(list.size()/2);
-        if(list.get(middle).compareTo(target) == 0) {
-            return middle;
-        }else if(list.get(middle).compareTo(target) == -1) {
-            return binarySearch(list, target, begin, middle - 1);
-        }else if(list.get(middle).compareTo(target) == 1) {
-            return binarySearch(list, target, middle+1, end);
-        }
-        return 0;
-    }
+public static <T> int binarySearch(ArrayList<? extends Comparable<T>> list, T target, int begin, int end) {
+    list.sort(null);
+    int mid = (int)((end + begin)/2);
+    if(end - begin< 0)
+        return -1;
+    if(list.get(mid).compareTo(target) == 0)
+        return mid;
+    else if(list.get(mid).compareTo(target) == 1)
+        return binarySearch(list, target, begin, mid - 1); //왼쪽에 존재
+    else if(list.get(mid).compareTo(target) == -1)
+        return binarySearch(list, target, mid + 1, end); //오른쪽에 존재
+    return 0;
 }
-                        </code></pre>
-                        
+                        </code></pre>                        
+                    </div>
+
+                    <hr><br>
+
+                    <div class="content__page-header entry__header" id="second">
+                        <h1 class="display-1 entry__title">
+                            10월 8일 공부기록
+                        </h1>
+                        <ul class="entry__header-meta">
+                            <li class="contents">everyday study</li>
+                            <li class="date">Date : 2019/10/08</li>
+                        </ul>
+                    </div>
+                    <div class="entry__content">
+                        <h1>인공지능 공부2</h1>
+                            <ul>
+                                <li>
+                                    확률적 모델링 : 통계학 이론을 데이터 분석에 응용한 것으로 초창기 머신 러닝 형태이다.<br>
+                                    이와 관련되어 가장 잘 알려진 알고리즘 중 하나는 나이브 베이즈 알고리즘이다.
+                                </li>
+                                <li>
+                                    초창기 신경망 : 성공적인 첫 번째 신경망 애플리케이션인 LeNet은 1989년 벨 연구소에서 초창기 합성곱 신경망과 역전파를 연결하여 만들었다.
+                                </li>
+                                <li>
+                                    <커널 방법 : 1990년 대 인기 있는 머신 러닝 접근 방법으로 그 중 서포트 벡터 머신(SVM)이 가장 유명하다.<br>
+                                    <SVM : 분류 문제를 해결하기 위해 2개의 다른 범주에 소한 데이터 포인트 그룹 사이에 좋은 결정 경계를 찾는다.<br>
+                                    <b>SVM이 결정 경계를 찾는 과정</b><br>
+                                    <ol>
+                                        <li>결정 경계가 하나의 초평면으로 표현될 수 있는 새로운 고차원 표현으로 데이터를 매핑한다.</li>
+                                        <li>초평면과 각 클래스의 가장 가까운 데이터 포인트 사이의 거리가 최대가 되는 최선의 결정 경계를 찾는 <b>마진 최대화</b>라는 단계를 거친다.</li>
+                                    </ol>
+                                </li>
+                                <li>
+                                    결정트리 : 플로차트와 같은 구조를 가지며 입력 데이터 포인트를 분류하거나 주어진 입력에 대해 출력 값을 예측 한다.<br>
+                                    이를 적용한 것 중 랜덤 포레스트 알고리즘과 그래디언트 부스팅 머신이 유명하다.
+                                </li>
+                                <li>
+                                    신경망의 재림 : 2010년 경에 심층 신경망으로 이미지 분류 대회에서 우승한 것으로 부터 다시 신경망이 주목을 받으면서 딥러닝이 주목을 받기 시작했다.
+                                </li>
+                                <li>
+                                    딥러닝의 특징 : 층을 거치면서 점진적으로 더 복잡한 표현이 만들어진다.<br>
+                                    이런 점진적인 중간표현이 공동으로 학습된다.
+                                </li>
+                            </ul>
                     </div>
 
                 </article>
