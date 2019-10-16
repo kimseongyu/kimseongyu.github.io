@@ -167,6 +167,170 @@
                             alt='20191015_005902' referrerPolicy='no-referrer' /></p>
                     </div>
 
+                    <hr><br>
+
+                    <div class="content__page-header entry__header" id="second">
+                        <h1 class="display-1 entry__title">
+                            10월 15일 공부기록
+                        </h1>
+                        <ul class="entry__header-meta">
+                            <li class="contents">everyday study</li>
+                            <li class="date">Date : 2019/10/15</li>
+                        </ul>
+                    </div>
+                    <div class="entry__content">
+                        <p>컴퓨터 프로그래밍2 정렬 과제를 하였다.</p>
+                        <h3>기수 정렬(미완성)</h3>
+                        <pre><code class='language-java' lang='java'>
+public static void radixSort(int[] a) {
+    int[][] list = new int[10][a.length];
+    int[] size = new int[10];
+    int index;
+    int max = 0;
+    int n = 1;
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < a.length; j++) {
+            index = (a[j]%(int)Math.pow(10, n))/(int)Math.pow(10,n-1);
+            list[index][size[index]] = a[j];
+            if(max < j) {
+                max = j;
+            }
+        }
+        
+        if(max/Math.pow(10,n) > 0) {
+            n++;
+        }
+    }
+}
+                        </code></pre>
+                        <h3>정렬속도 비교</h3>
+                        <pre><code class='language-java' lang='java'>
+public class SortTest {
+    public static int[] makeRandArr(int n, int low, int high) {
+        int[] list = new int[n];
+        int number;
+        for(int i = 0; i < n;) {
+            number = (int)(Math.random()*high);
+            if(number >= low) {
+                list[i] = number;
+                i++;
+            }
+        }
+        return list;
+    }
+    public static void main(String[] args) {
+        int[] arr1 = new int[10000];
+        int[] arr2 = new int[10000];
+        int[] arr3 = new int[10000];
+        int[] arr4 = new int[10000];
+        arr1 = makeRandArr(10000,1,100000);
+        System.arraycopy(arr1, 0, arr2, 0, arr1.length - 1);
+        System.arraycopy(arr1, 0, arr3, 0, arr1.length - 1);
+        System.arraycopy(arr1, 0, arr4, 0, arr1.length - 1);
+        long start, end;
+        
+        start = System.nanoTime();
+        BubbleSortTest.bubbleSort(arr1);
+        end = System.nanoTime();
+        System.out.println("Random Bubble sort: " + (end - start)/1000000000.0 + "초");
+        
+        start = System.nanoTime();
+        SelectionSortTest.selectionSort(arr2);
+        end = System.nanoTime();
+        System.out.println("Random Selection sort: " + (end - start)/1000000000.0 + "초");
+        
+        start = System.nanoTime();
+        InsertionSortTest.insertionSort(arr3);
+        end = System.nanoTime();
+        System.out.println("Random Insertion sort: " + (end - start)/1000000000.0 + "초");
+        
+        start = System.nanoTime();
+        RadixSortTest.radixSort(arr4);
+        end = System.nanoTime();
+        System.out.println("Random Radix sort: " + (end - start)/1000000000.0 + "초");
+        
+        arr1 = new int[10000];
+        arr2 = new int[10000];
+        arr3 = new int[10000];
+        arr4 = new int[10000];
+        for(int i = 1; i<= 10000; i++) {
+            arr1[i-1] = i;
+        }
+        System.arraycopy(arr1, 0, arr2, 0, arr1.length - 1);
+        System.arraycopy(arr1, 0, arr3, 0, arr1.length - 1);
+        System.arraycopy(arr1, 0, arr4, 0, arr1.length - 1);
+        
+        start = System.nanoTime();
+        BubbleSortTest.bubbleSort(arr1);
+        end = System.nanoTime();
+        System.out.println("Sorted Bubble sort: " + (end - start)/1000000000.0 + "초");
+        
+        start = System.nanoTime();
+        SelectionSortTest.selectionSort(arr2);
+        end = System.nanoTime();
+        System.out.println("Sorted Selection sort: " + (end - start)/1000000000.0 + "초");
+        
+        start = System.nanoTime();
+        InsertionSortTest.insertionSort(arr3);
+        end = System.nanoTime();
+        System.out.println("Sorted Insertion sort: " + (end - start)/1000000000.0 + "초");
+        
+        start = System.nanoTime();
+        RadixSortTest.radixSort(arr4);
+        end = System.nanoTime();
+        System.out.println("Sorted Radix sort: " + (end - start)/1000000000.0 + "초");
+        
+        arr1 = new int[10000];
+        arr2 = new int[10000];
+        arr3 = new int[10000];
+        arr4 = new int[10000];
+        for(int i = 1; i<= 10000; i++) {
+            arr1[10000-i] = i;
+        }
+        System.arraycopy(arr1, 0, arr2, 0, arr1.length - 1);
+        System.arraycopy(arr1, 0, arr3, 0, arr1.length - 1);
+        System.arraycopy(arr1, 0, arr4, 0, arr1.length - 1);
+        
+        start = System.nanoTime();
+        BubbleSortTest.bubbleSort(arr1);
+        end = System.nanoTime();
+        System.out.println("Reverse Sorted Bubble sort: " + (end - start)/1000000000.0 + "초");
+        
+        start = System.nanoTime();
+        SelectionSortTest.selectionSort(arr2);
+        end = System.nanoTime();
+        System.out.println("Reverse Sorted Selection sort: " + (end - start)/1000000000.0 + "초");
+        
+        start = System.nanoTime();
+        InsertionSortTest.insertionSort(arr3);
+        end = System.nanoTime();
+        System.out.println("Reverse Sorted Insertion sort: " + (end - start)/1000000000.0 + "초");
+        
+        start = System.nanoTime();
+        RadixSortTest.radixSort(arr4);
+        end = System.nanoTime();
+        System.out.println("Reverse Sorted Radix sort: " + (end - start)/1000000000.0 + "초");
+    }
+}
+/*랜덤 버블정렬 : 0.4034064초
+    *랜덤 선택정렬 : 0.1449511초
+    *랜덤 삽입정렬 : 0.1377015초
+    *랜덤 기수정렬 :
+    *정렬된 버블정렬 : 0.0507967초
+    *정렬된 선택정렬 : 0.126686초
+    *정렬된 삽입정렬 : 0.0016369초
+    *정렬된 기수정렬 :
+    *역순 정렬된 버블정렬 : 0.1348497초
+    *역순 정렬된 선택정렬 : 0.0991714초
+    *역순 정렬된 삽입정렬 : 0.1627828초
+    *역순 정렬된 기수정렬 :
+    *랜덤일때 빠른정렬 : 삽입정렬 > 선택정렬 > 버블정렬
+    *정렬일때 빠른정렬 : 삽입정렬 > 버블정렬 > 선택정렬
+    *역순 정렬일때 빠른정렬 : 선택정렬 > 버블정렬 > 삽입정렬
+*/
+                        </code></pre>
+                    </div>
+
                 </article>
             </main>
 
