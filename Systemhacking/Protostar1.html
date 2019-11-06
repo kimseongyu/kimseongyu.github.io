@@ -6,8 +6,8 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>everydaystudy - sun's blog</title>
-    <meta name="description" content="2019 everydaystudy 11-1">
+    <title>Systemhacking - sun's blog</title>
+    <meta name="description" content="Protostar">
     <meta name="author" content="kim seon gyu">
 
     <!-- mobile specific metas
@@ -87,13 +87,13 @@
                         <a href="#0" title="">Categories</a>
                         <ul class="sub-menu">
                             <li><a href="../mogaco/mogaco.html">모각코</a></li>
-                            <li class="current"><a href="everydaystudy.html">매일매일스터디</a></li>
+                            <li><a href="../everystudy/everydaystudy.html">매일매일스터디</a></li>
                         </ul>
                     </li>
                     <li class="has-children">
                         <a href="#0" title="">Blog Posts</a>
                         <ul class="sub-menu">
-                            <li><a href="../Systemhacking/Systemhacking.html">Systemhacking</a></li>
+                            <li class="current"><a href="Systemhacking.html">Systemhacking</a></li>
                         </ul>
                     </li>
                     <li><a href="../page-styles.html" title="">Styles</a></li>
@@ -137,76 +137,90 @@
                 <div class="column large-full">
                     <nav class="pgn">
                         <ul>
-                            <li><a class="pgn__num" href="#first">11/04</a></li>
-                            <li><a class="pgn__num" href="#second">11/05</a></li>
-                            <li><a class="pgn__num" href="#third">11/06</a></li>
-                            <li><a class="pgn__num" href="#fourth">11/07</a></li>
-                            <li><a class="pgn__num" href="#fiveth">11/08</a></li>
+                            <li><a class="pgn__num" href="#stack0">Stack0</a></li>
                         </ul>
                     </nav>
                 </div>
             </div>
 
             <main class="row content__page">
-                <article>
-                    <div class="content__page-header entry__header" id="first">
+
+                <article class="column large-full entry format-gallery">
+
+                    <div class="content__page-header entry__header" id="stack0">
                         <h1 class="display-1 entry__title">
-                            11월 4일 공부기록
+                            Stack0
                         </h1>
                         <ul class="entry__header-meta">
-                            <li class="contents">everyday study</li>
-                            <li class="date">Date : 2019/11/04</li>
-                        </ul>
-                    </div>
-                    <div class="entry__content">
-                        <p>컴퓨터 프로그래밍2 실습과 과제를 끝냈다.</p>
-                        <p>실습1</p>
-                        <p><img src='../images/everydaystudy/lab10_practice1.GIF'
-                            alt='실습1' referrerPolicy='no-referrer' /></p>
-                        <p>실습2</p>
-                        <p><img src='../images/everydaystudy/lab10_practice2.GIF'
-                            alt='실습2' referrerPolicy='no-referrer' /></p>
-                        <p>실습3</p>
-                        <p><img src='../images/everydaystudy/lab10_practice3.GIF'
-                            alt='실습3' referrerPolicy='no-referrer' /></p>
-                         <p>과제1</p>
-                        <p><img src='../images/everydaystudy/lab10_homework1.GIF'
-                            alt='과제1' referrerPolicy='no-referrer' /></p>
-                    </div>
-
-                    <hr><br>
-
-                    <div class="content__page-header entry__header" id="second">
-                        <h1 class="display-1 entry__title">
-                            11월 5일 공부기록
-                        </h1>
-                        <ul class="entry__header-meta">
-                            <li class="contents">everyday study</li>
-                            <li class="date">Date : 2019/11/05</li>
-                        </ul>
-                    </div>
-                    <div class="entry__content">
-                        <p>컴퓨터 프로그래밍2 과제를 끝냈다.</p>
-                        <p>과제2</p>
-                        <p><img src='../images/everydaystudy/lab10_homework2.GIF'
-                            alt='과제2' referrerPolicy='no-referrer' /></p>
-                    </div>
-
-                    <hr><br>
-
-                    <div class="content__page-header entry__header" id="third">
-                        <h1 class="display-1 entry__title">
-                            11월 6일 공부기록
-                        </h1>
-                        <ul class="entry__header-meta">
-                            <li class="contents">everyday study</li>
+                            <li class="contents">Systemhacking</li>
                             <li class="date">Date : 2019/11/06</li>
                         </ul>
                     </div>
                     <div class="entry__content">
-                        <p>jfs를 대비하기 위해 프로토스타 stack0문제를 풀었다.</p>
-                        <a href="../Systemhacking/Protostar1.html#stack0">프르토스타 stack0</a>
+                        <pre><code class='language-c' lang='c'>
+#include &lt;stdlib.h&lt;
+#include &lt;unistd.h&lt;
+#include &lt;stdio.h&lt;
+
+int main(int argc, char **argv)
+{
+    volatile int modified;
+    char buffer[64];
+
+    modified = 0;
+    gets(buffer);
+
+    if(modified != 0) {
+        printf("you have changed the 'modified' variable\n");
+    } else {
+        printf("Try again?\n");
+    }
+}
+                        </code></pre>
+                        <p>Stack0파일의 소스코드이다. buffer를 오버플로우 시켜서 modified의 값을 0이 아닌 다른 값으로 바꾸면 될것 같으니 gdb로 어셈블리어를 보자.</p>
+                        <pre><code class='language-assembly' lang='assembly'>
+0x08048456 <+0>:	push   ebp
+0x08048457 <+1>:	mov    ebp,esp
+0x08048459 <+3>:	push   ebx
+0x0804845a <+4>:	sub    esp,0x44
+0x0804845d <+7>:	call   0x8048390 &lt;__x86.get_pc_thunk.bx>
+0x08048462 <+12>:	add    ebx,0x1b9e
+0x08048468 <+18>:	mov    DWORD PTR [ebp-0x8],0x0
+0x0804846f <+25>:	lea    eax,[ebp-0x48]
+0x08048472 <+28>:	push   eax
+0x08048473 <+29>:	call   0x8048300 &lt;gets@plt>
+0x08048478 <+34>:	add    esp,0x4
+0x0804847b <+37>:	mov    eax,DWORD PTR [ebp-0x8]
+0x0804847e <+40>:	test   eax,eax
+0x08048480 <+42>:	je     0x8048493 &lt;main+61>
+0x08048482 <+44>:	lea    eax,[ebx-0x1ad0]
+0x08048488 <+50>:	push   eax
+0x08048489 <+51>:	call   0x8048310 &lt;puts@plt>
+0x0804848e <+56>:	add    esp,0x4
+0x08048491 <+59>:	jmp    0x80484a2 &lt;main+76>
+0x08048493 <+61>:	lea    eax,[ebx-0x1aa7]
+0x08048499 <+67>:	push   eax
+0x0804849a <+68>:	call   0x8048310 &lt;puts@plt>
+0x0804849f <+73>:	add    esp,0x4
+0x080484a2 <+76>:	mov    eax,0x0
+0x080484a7 <+81>:	mov    ebx,DWORD PTR [ebp-0x4]
+0x080484aa <+84>:	leave  
+0x080484ab <+85>:	ret
+                        </code></pre>
+                        <p>main함수의 assembly어이다.<br>
+                        ebp-0x8에 0을 mov하는 것으로 보아 ebp-0x8은 modified라는 것을 알 수 있다.<br>
+                        ebp-0x48을 push하여 get으로 받는 것을 보아 buffer라는 것을 알 수 있다.<br>
+                        buffer를 64바이트 만큼 크기를 지정해 주었기 때문에 ebp-0x8과 ebp-0x48사이에 64바이트 만큼의 공간이 생긴다.<br>
+                        64바이트를 넘어서 buffer를 받게되면 modified를 바꿀 수 있게 될 것이다.
+                        <img src='../images/Systemhacking/PROTOSTAR/stack0_1.GIF' alt='stack0.1'
+                                referrerPolicy='no-referrer' /><br>
+                        64바이트만큼만 buffer를 받으면 try again이 뜨지만<br>
+                        65바이트를 받으니 you have changed the 'modified' variable가 떠서 맞게 풀었다는것을 알 수 있다.
+                        </p>
                     </div>
+
+                    <hr><br>
+
                 </article>
             </main>
 
