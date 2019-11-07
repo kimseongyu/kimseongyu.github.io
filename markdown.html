@@ -2,14 +2,78 @@
 <html>
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
-<title></title></head>
-<body><h1>인공지능 교육 2주차</h1>
-<h3>몬테카를로</h3>
-<p>V(s) = 도달한 장소에 따라 지난간 땅들에 점수를 부여함</p>
-<p>v(s) &lt;- v(s) +a(G(s) - v(s)) G(s) = </p>
-<p>Q(s,a) function : V(s)에서 State와 Action을 한 묶음으로 생각(땅의 점수를 내리지 않고 가는 길목의 점수를 내림)</p>
-<p>&nbsp;</p>
-<h3>Q-Learning</h3>
-<p>Sarsa의 s,a에서 a를 제거</p>
+<title>hitcon lab03</title></head>
+<body><pre><code class='language-c' lang='c'>#include &lt;stdio.h&gt;
+
+char name[50];
+
+int main(){
+	setvbuf(stdout,0,2,0);
+	printf(&quot;Name:&quot;);
+	read(0,name,50);
+	char buf[20];
+	printf(&quot;Try your best:&quot;);
+	gets(buf);
+	return ;
+}
+</code></pre>
+<p>lab03번 ret2sc파일의 소스코드이다.</p>
+<p>get으로 buf를 받을 때 overflow 시켜서  ret에 name의 주소를 넣으면 풀 수 있을 것 같다.</p>
+<pre><code class='language-assembly' lang='assembly'>0x000005cd &lt;+0&gt;:	lea    ecx,[esp+0x4]
+0x000005d1 &lt;+4&gt;:	and    esp,0xfffffff0
+0x000005d4 &lt;+7&gt;:	push   DWORD PTR [ecx-0x4]
+0x000005d7 &lt;+10&gt;:	push   ebp
+0x000005d8 &lt;+11&gt;:	mov    ebp,esp
+0x000005da &lt;+13&gt;:	push   ebx
+0x000005db &lt;+14&gt;:	push   ecx
+0x000005dc &lt;+15&gt;:	sub    esp,0x20
+0x000005df &lt;+18&gt;:	call   0x4d0 &lt;__x86.get_pc_thunk.bx&gt;
+0x000005e4 &lt;+23&gt;:	add    ebx,0x19e4
+0x000005ea &lt;+29&gt;:	mov    eax,DWORD PTR [ebx+0x2c]
+0x000005f0 &lt;+35&gt;:	mov    eax,DWORD PTR [eax]
+0x000005f2 &lt;+37&gt;:	push   0x0
+0x000005f4 &lt;+39&gt;:	push   0x2
+0x000005f6 &lt;+41&gt;:	push   0x0
+0x000005f8 &lt;+43&gt;:	push   eax
+0x000005f9 &lt;+44&gt;:	call   0x470 &lt;setvbuf@plt&gt;
+0x000005fe &lt;+49&gt;:	add    esp,0x10
+0x00000601 &lt;+52&gt;:	sub    esp,0xc
+0x00000604 &lt;+55&gt;:	lea    eax,[ebx-0x18e8]
+0x0000060a &lt;+61&gt;:	push   eax
+0x0000060b &lt;+62&gt;:	call   0x440 &lt;printf@plt&gt;
+0x00000610 &lt;+67&gt;:	add    esp,0x10
+0x00000613 &lt;+70&gt;:	sub    esp,0x4
+0x00000616 &lt;+73&gt;:	push   0x32
+0x00000618 &lt;+75&gt;:	lea    eax,[ebx+0x78]
+0x0000061e &lt;+81&gt;:	push   eax
+0x0000061f &lt;+82&gt;:	push   0x0
+0x00000621 &lt;+84&gt;:	call   0x430 &lt;read@plt&gt;
+0x00000626 &lt;+89&gt;:	add    esp,0x10
+0x00000629 &lt;+92&gt;:	sub    esp,0xc
+0x0000062c &lt;+95&gt;:	lea    eax,[ebx-0x18e2]
+0x00000632 &lt;+101&gt;:	push   eax
+0x00000633 &lt;+102&gt;:	call   0x440 &lt;printf@plt&gt;
+0x00000638 &lt;+107&gt;:	add    esp,0x10
+0x0000063b &lt;+110&gt;:	sub    esp,0xc
+0x0000063e &lt;+113&gt;:	lea    eax,[ebp-0x1c]
+0x00000641 &lt;+116&gt;:	push   eax
+0x00000642 &lt;+117&gt;:	call   0x450 &lt;gets@plt&gt;
+0x00000647 &lt;+122&gt;:	add    esp,0x10
+0x0000064a &lt;+125&gt;:	nop
+0x0000064b &lt;+126&gt;:	nop
+0x0000064c &lt;+127&gt;:	lea    esp,[ebp-0x8]
+0x0000064f &lt;+130&gt;:	pop    ecx
+0x00000650 &lt;+131&gt;:	pop    ebx
+0x00000651 &lt;+132&gt;:	pop    ebp
+0x00000652 &lt;+133&gt;:	lea    esp,[ecx-0x4]
+0x00000655 &lt;+136&gt;:	ret
+</code></pre>
+<p>ret2sc main함수의 assembly코드이다.</p>
+<p><img src="C:\Users\ksk85\Desktop\선규사진\Camera\20190422_223821.jpg" referrerpolicy="no-referrer" alt="20190422_223821"></p>
+<p>main+102에 브레이크를 걸고 실행시켜 보았다.</p>
+<p>name의 주소가 0x56557040이라고 뜬다. 다른 문제풀이랑은 주소가 다른데 잘못 된 것 같은 느낌이 든다.</p>
+<p><img src="C:\Users\ksk85\Desktop\선규사진\Camera\20180131_215535.jpg" referrerpolicy="no-referrer" alt="20180131_215535"></p>
+<p>pwntool로 payload를 만들고 실행시켜보았다.</p>
+<p>실행시키고 ls를 눌러보니 프로그램이 실행되지 않는다. 실패한 것 같다. 왜그런지 나중에 분석해봐야 겠다.</p>
 </body>
 </html>
