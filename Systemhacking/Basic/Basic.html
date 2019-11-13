@@ -15,9 +15,9 @@
 
     <!-- CSS
     ================================================== -->
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/vendor.css">
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/vendor.css">
+    <link rel="stylesheet" href="../../css/main.css">
 
     <!-- script
     ================================================== -->
@@ -25,9 +25,9 @@
 
     <!-- favicons
     ================================================== -->
-    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
     <link rel="manifest" href="site.webmanifest">
 
 </head>
@@ -52,30 +52,51 @@
 
             <div class="header__top">
                 <div class="header__logo">
-                    <a class="site-logo" href="../index.html">
-                        <img src="../images/logo.svg" alt="Homepage">
+                    <a class="site-logo" href="../../index.html">
+                        <img src="../../images/logo.svg" alt="Homepage">
                     </a>
                 </div>
+
+                <div class="header__search">
+    
+                    <form role="search" method="get" class="header__search-form" action="#">
+                        <label>
+                            <span class="hide-content">Search for:</span>
+                            <input type="search" class="header__search-field" placeholder="Type Keywords" value="" name="s" title="Search for:" autocomplete="off">
+                        </label>
+                        <input type="submit" class="header__search-submit" value="Search">
+                    </form>
+        
+                    <a href="#0" title="Close Search" class="header__search-close">Close</a>
+        
+                </div>  <!-- end header__search -->
+
+                <!-- toggles -->
+                <a href="#0" class="header__search-trigger"></a>
+                <a href="#0" class="header__menu-toggle"><span>Menu</span></a>
+
             </div> <!-- end header__top -->
 
             <nav class="header__nav-wrap">
 
                 <ul class="header__nav">
-                    <li><a href="../index.html" title="">Home</a></li>
+                    <li><a href=../../index.html" title="">Home</a></li>
                     <li class="has-children">
                         <a href="#0" title="">Categories</a>
                         <ul class="sub-menu">
-                        <li><a href="../mogaco/mogaco.html">모각코</a></li>
-                        <li><a href="../everystudy/everydaystudy.html">매일매일스터디</a></li>
+                        <li><a href="../../mogaco/mogaco.html">모각코</a></li>
+                        <li><a href="../../everystudy/everydaystudy.html">매일매일스터디</a></li>
                         </ul>
                     </li>
                     <li class="has-children">
                         <a href="#0" title="">Blog Posts</a>
                         <ul class="sub-menu">
-                        <li class="current"><a href="Systemhacking.html">Systemhacking</a></li>
+                        <li class="current"><a href="../Systemhacking.html">Systemhacking</a></li>
                         </ul>
                     </li>
-                    <li><a href="../page-about.html" title="">About</a></li>
+                    <li><a href="../../page-styles.html" title="">Styles</a></li>
+                    <li><a href="../../page-about.html" title="">About</a></li>
+                    <li><a href="../../page-contact.html" title="">Contact</a></li>
                 </ul> <!-- end header__nav -->
 
                 <ul class="header__social">
@@ -112,26 +133,73 @@
                 <div class="masonry">
     
                     <div class="grid-sizer"></div>
-    
+                    
                     <article class="masonry__brick entry format-standard animate-this">
-                            
+                         
                         <div class="entry__thumb">
-                            <a href="Hitcon_Training1.html" class="entry__thumb-link">
-                                <img src="../images/Systemhacking/HITCON/Hitcon-training.png" 
-                                        srcset="../images/Systemhacking/HITCON/Hitcon-training.png 1x, ../images/Systemhacking/HITCON/Hitcon-training.png 2x" alt="">
+                            <a href="Basic.html" class="entry__thumb-link">
+                                <img src="../../images/Systemhacking/Basic/basicphoto.jpg" 
+                                        srcset="../../images/Systemhacking/Basic/basicphoto.jpg 1x, ../../images/Systemhacking/Basic/basicphoto.jpg 2x" alt="">
                             </a>
                         </div>
                         <div class="entry__text">
                             <div class="entry__header">
-                                <h2 class="entry__title"><a href="Hitcon_Training1.html">Hitcon_Training1</a></h2>
+                                <h2 class="entry__title"><a href="Basic.html">Assembly 정리</a></h2>
                                 <div class="entry__meta">
                                     <span class="entry__meta-date">
-                                        <a href="Hitcon_Training.html">2019</a>
+                                        <a href="Basic.html">2019</a>
                                     </span>
                                 </div>
                             </div>
                             <div class="entry__excerpt">
-                                <p>Hitcon_Training문제를 풀어보면서 시스템해킹에 대한 실력을 키워보자</p>
+                                <p>Assembly어를 공부하자</p>
+                            </div>
+                        </div>
+        
+                    </article> <!-- end article -->
+
+                    <article class="masonry__brick entry format-standard animate-this">
+                         
+                        <div class="entry__thumb">
+                            <a href="Basic.html" class="entry__thumb-link">
+                                <img src="../../images/Systemhacking/Basic/basicphoto.jpg" 
+                                        srcset="../../images/Systemhacking/Basic/basicphoto.jpg 1x, ../../images/Systemhacking/Basic/basicphoto.jpg 2x" alt="">
+                            </a>
+                        </div>
+                        <div class="entry__text">
+                            <div class="entry__header">
+                                <h2 class="entry__title"><a href="Basic.html">PwnTool 사용법</a></h2>
+                                <div class="entry__meta">
+                                    <span class="entry__meta-date">
+                                        <a href="Basic.html">2019</a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="entry__excerpt">
+                                <p>Pwntool사용법을 익혀서 pwntool을 자유자재로 다루어 보자</p>
+                            </div>
+                        </div>
+        
+                    </article> <!-- end article -->
+
+                    <article class="masonry__brick entry format-standard animate-this">
+                        <div class="entry__thumb">
+                            <a href="Basic.html" class="entry__thumb-link">
+                                <img src="../../images/Systemhacking/Basic/basicphoto.jpg" 
+                                        srcset="../../images/Systemhacking/Basic/basicphoto.jpg 1x, ../../images/Systemhacking/Basic/basicphoto.jpg 2x" alt="">
+                            </a>
+                        </div>
+                        <div class="entry__text">
+                            <div class="entry__header">
+                                <h2 class="entry__title"><a href="Basic.html">GDB 명령어 정리</a></h2>
+                                <div class="entry__meta">
+                                    <span class="entry__meta-date">
+                                        <a href="Basic.html">2019</a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="entry__excerpt">
+                                <p>GDB명령어를 익혀 편하게 GDB다루자</p>
                             </div>
                         </div>
         
@@ -140,46 +208,22 @@
                     <article class="masonry__brick entry format-standard animate-this">
                             
                         <div class="entry__thumb">
-                            <a href="Protostar1.html" class="entry__thumb-link">
-                                <img src="../images/Systemhacking/PROTOSTAR/protostar.GIF" 
-                                        srcset="../images/Systemhacking/PROTOSTAR/protostar.GIF 1x, ../images/Systemhacking/PROTOSTAR/protostar.GIF 2x" alt="">
+                            <a href="Basic.html" class="entry__thumb-link">
+                                <img src="../../images/Systemhacking/Basic/basicphoto.jpg" 
+                                        srcset="../../images/Systemhacking/Basic/basicphoto.jpg 1x, ../../images/Systemhacking/Basic/basicphoto.jpg 2x" alt="">
                             </a>
                         </div>
                         <div class="entry__text">
                             <div class="entry__header">
-                                <h2 class="entry__title"><a href="Protostar1.html">Protostar1</a></h2>
+                                <h2 class="entry__title"><a href="Basic.html">Linux 명령어 정리</a></h2>
                                 <div class="entry__meta">
                                     <span class="entry__meta-date">
-                                        <a href="Protostar1.html">2019</a>
+                                        <a href="Basic.html">2019</a>
                                     </span>
                                 </div>
                             </div>
                             <div class="entry__excerpt">
-                                <p>Protostar문제를 풀어보면서 시스템해킹에 대한 실력을 키워보자</p>
-                            </div>
-                        </div>
-        
-                    </article> <!-- end article -->
-
-                    <article class="masonry__brick entry format-standard animate-this">
-                            
-                        <div class="entry__thumb">
-                            <a href="Basic/Basic.html" class="entry__thumb-link">
-                                <img src="../images/Systemhacking/Basic/basicphoto.jpg" 
-                                        srcset="../images/Systemhacking/Basic/basicphoto.jpg 1x, ../images/Systemhacking/Basic/basicphoto.jpg 2x" alt="">
-                            </a>
-                        </div>
-                        <div class="entry__text">
-                            <div class="entry__header">
-                                <h2 class="entry__title"><a href="Basic/Basic.html">Systemhacking basics</a></h2>
-                                <div class="entry__meta">
-                                    <span class="entry__meta-date">
-                                        <a href="Basic/Basic.html">2019</a>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="entry__excerpt">
-                                <p>Systemhacking을 공부하기전 기초를 튼튼하게 쌓자!!!</p>
+                                <p>Linux명령어를 익혀 편하게 Linux터미널을 다루자</p>
                             </div>
                         </div>
         
@@ -214,8 +258,8 @@
 
     <!-- Java Script
     ================================================== -->
-    <script src="../js/jquery-3.2.1.min.js"></script>
-    <script src="../js/plugins.js"></script>
-    <script src="../js/main.js"></script>
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/plugins.js"></script>
+    <script src="../../js/main.js"></script>
 
 </body>
