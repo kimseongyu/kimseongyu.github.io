@@ -7,7 +7,7 @@
     ================================================== -->
     <meta charset="utf-8">
     <title>everydaystudy - sun's blog</title>
-    <meta name="description" content="2019 everydaystudy 11-2">
+    <meta name="description" content="2019 everydaystudy 11-3">
     <meta name="author" content="kim seon gyu">
 
     <!-- mobile specific metas
@@ -115,11 +115,11 @@
                 <div class="column large-full">
                     <nav class="pgn">
                         <ul>
-                            <li><a class="pgn__num" href="#first">11/11</a></li>
-                            <li><a class="pgn__num" href="#second">11/12</a></li>
-                            <li><a class="pgn__num" href="#third">11/13</a></li>
-                            <li><a class="pgn__num" href="#fourth">11/14</a></li>
-                            <li><a class="pgn__num" href="#fiveth">11/15</a></li>
+                            <li><a class="pgn__num" href="#first">11/18</a></li>
+                            <li><a class="pgn__num" href="#second">11/19</a></li>
+                            <li><a class="pgn__num" href="#third">11/20</a></li>
+                            <li><a class="pgn__num" href="#fourth">11/21</a></li>
+                            <li><a class="pgn__num" href="#fiveth">11/22</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -130,167 +130,72 @@
 
                     <div class="content__page-header entry__header" id="first">
                         <h1 class="display-1 entry__title">
-                            11월 11일 공부기록
+                            11월 18일 공부기록
                         </h1>
                         <ul class="entry__header-meta">
                             <li class="contents">everyday study</li>
-                            <li class="date">Date : 2019/11/11</li>
+                            <li class="date">Date : 2019/11/18</li>
                         </ul>
                     </div>
                     <div class="entry__content">
-                        <p>깜빡하고 포스팅을 못했다. ㅠㅠ</p>
+                        <p>포스팅해야지 하고 생각했는데 깜빡하고 잠들었다.ㅠㅠ</p>
                     </div>
 
                     <hr><br>
 
                     <div class="content__page-header entry__header" id="second">
                         <h1 class="display-1 entry__title">
-                            11월 12일 공부기록
+                            11월 19일 공부기록
                         </h1>
                         <ul class="entry__header-meta">
                             <li class="contents">everyday study</li>
-                            <li class="date">Date : 2019/11/12</li>
+                            <li class="date">Date : 2019/11/19</li>
                         </ul>
                     </div>
                     <div class="entry__content">
-                        <p>컴퓨터 프로그래밍2 과제를 끝냈다.</p>
+                        <p>컴퓨터프로그래밍2 스레드 과제와 복습을 하였다.</p>
                         <pre><code class='language-java' lang='java'>
-public class StopWatchController implements Initializable{
-
-    @FXML Label timeLabel;
-    @FXML Label currentLap;
-    @FXML Button startPauseButton;
-    @FXML Button lapStopButton;
+public class TransferRunnable extends Thread{
+    Bank bank;
+    int fromAccount;
+    double maxAmount;
+    final int DELAY = 10;
     
-    @FXML TableView<LapTable> table;
-    @FXML TableColumn<LapTable, Integer> no;
-    @FXML TableColumn<LapTable, String> lapTime;
-    @FXML TableColumn<LapTable, String> total;
-    
-    private int n;
-    private long milliseconds, currentMilliseconds;
-    private boolean isRunning;
-    private Timeline timeline;
-    private ObservableList<LapTable> lapTimeList;
-    
-    @FXML public void startPauseAction() {
-        if(isRunning) {
-            timeline.pause();
-            isRunning = false;
-            startPauseButton.setText("시작");
-            lapStopButton.setText("초기화");
-        }else {
-            timeline.play();
-            isRunning = true;
-            startPauseButton.setText("일시정지");
-            lapStopButton.setText("랩타임");
-            lapStopButton.setDisable(false);
-        }
+    public TransferRunnable(Bank bank,int fromAccount, double maxAmount) {
+        this.bank = bank;
+        this.fromAccount = fromAccount;
+        this.maxAmount = maxAmount;
     }
-    @FXML public void labStopAction() {
-        if(isRunning) {
-            lapTimeList.add(new LapTable(n++,currentLap.getText(),timeLabel.getText()));
-            table.scrollTo(lapTimeList.size());
-        }else {
-            startPauseButton.setText("시작");
-            lapStopButton.setText("랩타임");
-            lapStopButton.setDisable(true);
-            timeline.pause();
-            timeLabel.setText("00:00:00.000");
-            milliseconds = 0;
-            n = 0;
-            lapTimeList.clear();
-        }
-        currentLap.setText(millisecondsToTime(0));
-        currentMilliseconds = 0;
-    }
+    
     @Override
-    public void initialize(URL url, ResourceBundle resource) {
-        lapTimeList = FXCollections.observableArrayList();
-        table.setItems(lapTimeList);
-        table.setPlaceholder(new Label("랩 데이터가 없음"));
-        
-        no.setCellValueFactory(param -> param.getValue().getNoProperty().asObject());
-        lapTime.setCellValueFactory(param -> param.getValue().getLapTimeProperty());
-        total.setCellValueFactory(param -> param.getValue().getTotalProperty());
-        
-        KeyFrame keyFrame = new KeyFrame(Duration.ONE, new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                timeLabel.setText(millisecondsToTime(milliseconds++));
-                currentLap.setText(millisecondsToTime(currentMilliseconds++));
-            }
-        });
-        
-        timeline = new Timeline(keyFrame);
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.setAutoReverse(false);
+    public void run() {
+        while(true) {
+        bank.transfer(fromAccount, (int)(Math.random()*100), (int)(Math.random()*maxAmount));
+        try {Thread.sleep(DELAY);}catch(Exception e) {}
+        }
     }
-    private String millisecondsToTime(long milliseconds) {
-        int h = 0, m = 0, s = 0, ms = 0;
-        ms = (int)(milliseconds % 1000);
-        milliseconds = milliseconds/1000;
-        s = (int)(milliseconds % 60);
-        milliseconds = milliseconds/60;
-        m = (int)(milliseconds % 60);
-        milliseconds = milliseconds/60;
-        h = (int)milliseconds;
-        
-        return String.format("%02d:%02d:%02d.%03d", h, m, s, ms);
-    }
+}
 
+public class SynchBankTest {
+    public static final int NCUSTOMERS = 100;
+    public static final int INITIAL_BALANCE = 1000;
+    public static void main(String[] args) {
+        int i, count;
+        Bank bank = new Bank(NCUSTOMERS);
+        
+        for(i = 0; i &lt; NCUSTOMERS; i++) {
+            bank.customer[i] = new Customer("CNU" + Integer.toString(i));
+            bank.customer[i].addAccount(new CheckingAccount(INITIAL_BALANCE));
+        }
+        Thread[] thread = new Thread[NCUSTOMERS];
+        for(i = 0; i &lt; NCUSTOMERS; i++) {
+            thread[i] = new Thread(new TransferRunnable(bank, i,INITIAL_BALANCE));
+            thread[i].start();
+        }
+    }
 }
                         </code></pre>
-                        <p><img src='../images/everydaystudy/11_12_homework.GIF'
-                            alt='과제'' referrerPolicy='no-referrer' /></p>
                     </div>
-
-                    <hr><br>
-
-                    <div class="content__page-header entry__header" id="second">
-                        <h1 class="display-1 entry__title">
-                            11월 13일 공부기록
-                        </h1>
-                        <ul class="entry__header-meta">
-                            <li class="contents">everyday study</li>
-                            <li class="date">Date : 2019/11/13</li>
-                        </ul>
-                    </div>
-                    <div class="entry__content">
-                        <p>블로그 대대적인 정리를 하였다.</p>
-                    </div>
-
-                    <hr><br>
-
-                    <div class="content__page-header entry__header" id="fourth">
-                        <h1 class="display-1 entry__title">
-                            11월 14일 공부기록
-                        </h1>
-                        <ul class="entry__header-meta">
-                            <li class="contents">everyday study</li>
-                            <li class="date">Date : 2019/11/14</li>
-                        </ul>
-                    </div>
-                    <div class="entry__content">
-                        <p>스터디 후 뒷풀이를 다녀온다고 깜빡하고 포스팅을 못 했다.ㅠㅠ</p>
-                    </div>
-
-                    <hr><br>
-
-                    <div class="content__page-header entry__header" id="fourth">
-                        <h1 class="display-1 entry__title">
-                            11월 15일 공부기록
-                        </h1>
-                        <ul class="entry__header-meta">
-                            <li class="contents">everyday study</li>
-                            <li class="date">Date : 2019/11/15</li>
-                        </ul>
-                    </div>
-                    <div class="entry__content">
-                        <p>컴퓨터 프로그래밍2 텀프로젝트를 하였다.<br>
-                        발표하기 전이기 때문에 기밀이여서 이미지 파일을 못 올린다.ㅎㅎ</p>
-                    </div>
-
                 </article>
             </main>
 
@@ -310,6 +215,7 @@ public class StopWatchController implements Initializable{
 
             <div class="go-top">
                 <a class="smoothscroll" title="Back to Top" href="#top"></a>
+            </div>
         </footer>
 
     </div> <!-- end s-wrap -->

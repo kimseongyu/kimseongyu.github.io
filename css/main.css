@@ -2948,7 +2948,7 @@ body.search-is-visible {
 .s-content,
 .s-footer {
   padding-left: 330px;
-  padding-right: 100px;
+  padding-right: 64px;
   max-width: 2140px;
 }
 
@@ -3631,4 +3631,10 @@ img.mogaco{
   height : 175px;
   width : auto;
 }
+
+article{
+  width: 900px;
+  margin: 0 auto;
+}
+
 /*# sourceMappingURL=main.css.map */
