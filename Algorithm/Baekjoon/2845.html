@@ -5,8 +5,8 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>Sun's blog</title>
-    <meta name="description" content="Algorithm page">
+    <title>2020 Algorithm - sun's blog</title>
+    <meta name="description" content="2020 Algorithm">
     <meta name="author" content="kim seon gyu">
 
     <!-- mobile specific metas
@@ -32,7 +32,7 @@
 
 </head>
 
-<body>
+<body class="ss-bg-white">
 
     <!-- preloader
     ================================================== -->
@@ -48,7 +48,7 @@
 
         <!-- site header
         ================================================== -->
-        <header class="s-header">
+        <header class="s-header header">
 
             <div class="header__top">
                 <div class="header__logo">
@@ -56,7 +56,7 @@
                         <img src="../../images/logo.svg" alt="Homepage">
                     </a>
                 </div>
-            </div> <!-- end header__top -->
+            </div>
 
             <nav class="header__nav-wrap">
 
@@ -106,49 +106,61 @@
 
         </header> <!-- end s-header -->
 
-        <div class="s-content">
-            <div class="content__page-header entry__header">
-                <h1 class="display-1 entry__title">
-                    BaekJoon
-                </h1>
-            </div>
-            <table>
-                <thead>
-                <tr>
-                    <th>Number</th>
-                    <th>Title</th>
-                    <th>Date</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td><a href="1003.html">1003</a></td>
-                    <td><a href="1003.html">피보나치 함수</a></td>
-                    <td><a href="1003.html">2020_01_13</a></td>
-                </tr>
-                <tr>
-                    <td><a href="1010.html">1010</a></td>
-                    <td><a href="1010.html">다리 놓기</a></td>
-                    <td><a href="1010.html">2020_01_14</a></td>
-                </tr>
-                <tr>
-                    <td><a href="2845.html">2845</a></td>
-                    <td><a href="2845.html">파티가 끝나고 난 뒤</a></td>
-                    <td><a href="2845.html">2020_01_16</a></td>
-                </tr>
-                <tr>
-                    <td><a href="4673.html">4673</a></td>
-                    <td><a href="4673.html">셀프 넘버</a></td>
-                    <td><a href="4673.html">2020_01_15</a></td>
-                </tr>
-                </tbody>
-            </table>
-        </div> <!-- end s-content -->
 
+        <!-- site content
+        ================================================== -->
+        <div class="s-content content">
+            
+            <main class="row content__page">
+                
+                <article class="column large-full entry format-gallery">
+                    
+                    <div class="content__page-header entry__header">
+                        <h1 class="display-1 entry__title">
+                        2845번 파티가 끝나고 난 뒤
+                        </h1>
+                        <ul class="entry__header-meta">
+                            <li class="contents">Algorithm</li>
+                            <li class="date">Date : 2020/01/16</li>
+                            <li class="contents"><a href="https://www.acmicpc.net/problem/2845">https://www.acmicpc.net/problem/2845</a></li>
+                        </ul>
+                    </div>
+                    <div class="entry__content">
+                        <p>문제요약<br>
+                            5개의 신문 기사에 실려있는 참가자의 수가 몇 명 만큼 잘못되어있는지 구하는 프로그램을 작성하시오.
+                        </p>
+                        <pre class="prettyprint prettyprinted" style>
+                            <code lang='Java'>
+public class Baekjoon2845 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
+        int person = input.nextInt();
+        int area = input.nextInt();
+        int allPerson = person * area;
+        int[] error = new int[5];
+        for(int i = 0; i < 5; i++) {
+            int num = input.nextInt();
+            error[i] = num - allPerson;
+        }
+        for(int i = 0; i < 5; i++) {
+            System.out.print(error[i] + " ");
+        }
+    }
+}
+                            </code>
+                        </pre>
+                        <p>전체 입력을 구한뒤 각 사람 수 빼줘서 풀었다.
+                        <img src='../../images/Algorithm/solve_4673.GIF'
+                            alt='solve' referrerPolicy='no-referrer' /></p>
+                    </div>
+            </main>
+
+        </div> <!-- end s-content -->
 
         <!-- footer
         ================================================== -->
-        <footer class="s-footer">
+        <footer class="s-footer footer">
             <div class="row">
                 <div class="column large-full footer__content">
                     <div class="footer__copyright">
@@ -160,7 +172,6 @@
 
             <div class="go-top">
                 <a class="smoothscroll" title="Back to Top" href="#top"></a>
-            </div>
         </footer>
 
     </div> <!-- end s-wrap -->
@@ -173,3 +184,4 @@
     <script src="../../js/main.js"></script>
 
 </body>
+</html>
