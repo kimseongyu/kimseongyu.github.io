@@ -5,8 +5,8 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>Sun's blog</title>
-    <meta name="description" content="Algorithm page">
+    <title>2020 Algorithm - sun's blog</title>
+    <meta name="description" content="2019 everydaystudy 9_2">
     <meta name="author" content="kim seon gyu">
 
     <!-- mobile specific metas
@@ -32,7 +32,7 @@
 
 </head>
 
-<body>
+<body class="ss-bg-white">
 
     <!-- preloader
     ================================================== -->
@@ -48,7 +48,7 @@
 
         <!-- site header
         ================================================== -->
-        <header class="s-header">
+        <header class="s-header header">
 
             <div class="header__top">
                 <div class="header__logo">
@@ -56,7 +56,7 @@
                         <img src="../../images/logo.svg" alt="Homepage">
                     </a>
                 </div>
-            </div> <!-- end header__top -->
+            </div>
 
             <nav class="header__nav-wrap">
 
@@ -106,64 +106,68 @@
 
         </header> <!-- end s-header -->
 
-        <div class="s-content">
-            <div class="content__page-header entry__header">
-                <h1 class="display-1 entry__title">
-                    BaekJoon
-                </h1>
-            </div>
-            <table>
-                <thead>
-                <tr>
-                    <th>Number</th>
-                    <th>Title</th>
-                    <th>Date</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td><a href="1003.html">1003</a></td>
-                    <td><a href="1003.html">피보나치 함수</a></td>
-                    <td><a href="1003.html">2020_01_13</a></td>
-                </tr>
-                <tr>
-                    <td><a href="1010.html">1010</a></td>
-                    <td><a href="1010.html">다리 놓기</a></td>
-                    <td><a href="1010.html">2020_01_14</a></td>
-                </tr>
-                <tr>
-                    <td><a href="1389.html" style="color: red;">1389</a></tdclass="nonsolve">
-                    <td><a href="1389.html" style="color: red;">케빈 베이컨의 6단계 법칙</a></td>
-                    <td><a href="1389.html" style="color: red;">2020_01_17</a></td>
-                </tr>
-                <tr>
-                    <td><a href="2845.html">2845</a></td>
-                    <td><a href="2845.html">파티가 끝나고 난 뒤</a></td>
-                    <td><a href="2845.html">2020_01_16</a></td>
-                </tr>
-                <tr>
-                    <td><a href="3460.html">3460</a></td>
-                    <td><a href="3460.html">이진수</a></td>
-                    <td><a href="3460.html">2020_01_20</a></td>
-                </tr>
-                <tr>
-                    <td><a href="4673.html">4673</a></td>
-                    <td><a href="4673.html">셀프 넘버</a></td>
-                    <td><a href="4673.html">2020_01_15</a></td>
-                </tr>
-                <tr>
-                    <td><a href="6378.html">6378</a></td>
-                    <td><a href="6378.html">디지털 루트</a></td>
-                    <td><a href="6378.html">2020_01_21</a></td>
-                </tr>
-                </tbody>
-            </table>
-        </div> <!-- end s-content -->
 
+        <!-- site content
+        ================================================== -->
+        <div class="s-content content">
+            
+            <main class="row content__page">
+                
+                <article class="column large-full entry format-gallery">
+                    
+                    <div class="content__page-header entry__header">
+                        <h1 class="display-1 entry__title">
+                        6378번 디지털 루트
+                        </h1>
+                        <ul class="entry__header-meta">
+                            <li class="contents">Algorithm</li>
+                            <li class="date">Date : 2020/01/21</li>
+                            <li class="contents"><a href="https://www.acmicpc.net/problem/6378">https://www.acmicpc.net/problem/6378</a></li>
+                        </ul>
+                    </div>
+                    <div class="entry__content">
+                        <p>문제요약<br>디지털 루트란 N을 이루고 있는 모든 자릿수를 더했을 때 한자리 숫자일 경우를 뜻한다.<br>
+                            양의 정수 N이 주어졌을 때, 그 수의 디지털 루트를 구하는 프로그램을 작성하시오.</p>
+                        <pre class="prettyprint prettyprinted">
+                            <code lang='Java'>
+public class Baekjoon6378 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
+        String a = input.next();
+        while(!a.equals("0")) {
+            System.out.println(sum(a));
+            a = input.next();
+        }
+    }
+    
+    public static String sum(String s) {
+        int num = 0;
+        for(int i = 0; i < s.length(); i++) {
+            num += s.charAt(i) - 48;
+        }
+        s = Integer.toString(num);
+        if(s.length() == 1) {
+            return s;
+        }else {
+            return sum(s);
+        }
+    }
+}
+                            </code>
+                        </pre>
+                        <p>문자열로 입력을 받아서 각 자릿수를 더하는 방식을 사용했다.
+                        <img src='../../images/Algorithm/solve_6378.GIF'
+                            alt='solve' referrerPolicy='no-referrer' /></p>
+                        </div>
+                    </article>
+            </main>
+
+        </div> <!-- end s-content -->
 
         <!-- footer
         ================================================== -->
-        <footer class="s-footer">
+        <footer class="s-footer footer">
             <div class="row">
                 <div class="column large-full footer__content">
                     <div class="footer__copyright">
@@ -175,7 +179,6 @@
 
             <div class="go-top">
                 <a class="smoothscroll" title="Back to Top" href="#top"></a>
-            </div>
         </footer>
 
     </div> <!-- end s-wrap -->
@@ -188,3 +191,4 @@
     <script src="../../js/main.js"></script>
 
 </body>
+</html>

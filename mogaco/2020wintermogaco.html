@@ -163,18 +163,14 @@
                             현재는 웹서버를 관리하기 위해서도 사용(Node.js)
                         </p>
                     </div>
-                    <script>
-                        console.log('JavaScript');
-                    </script>
                     <div class="entry__content">
                         <p>
                             개발자도구 사용법<br>
                             Consle에서 JavaScript 작성하여 실행가능<br>
-                            console.log('123')이라는 코드가 적힌 파일을 실행시키면 console에 123이 적힘
                         </p>
                     </div>
                     <script>
-                        JavaScript Study
+                        //JavaScript Study
                         // 주석1
                         /* 주석2 */
                     </script>
@@ -195,8 +191,10 @@
                             <img src="../images/mogaco/2020동계/1_code.GIF" class="mogaco">
                             <img src="../images/mogaco/2020동계/1_codehtml.GIF" class="mogaco"><br>
                             alert : 창을 띄움<br>
-                            console.log : 개발자도구 콘솔 창에 띄움<br>
-                            Math.--- : 수학관련 함수 사용가능
+                            console.log : 개발자도구 콘솔창에 인자를 띄움<br>
+                            Math.--- : 수학관련 함수 사용가능<br>
+                            <input type="button" value="alert" onclick="alert('alert()')">
+                            <input type="button" value="console.log" onclick="console.log('123')">
                         </p>
                     </div>
 
@@ -219,10 +217,42 @@
                     
                     <hr>
                     
+                    <div class="content__page-header entry__header">
+                        <h1 class="display-1 entry__title">
+                        모각코 2회
+                    </h1>
+                        <ul class="entry__header-meta">
+                            <li class="contents">Mogaco</li>
+                            <li class="date">Date : 2020/01/16</li>
+                        </ul>
+                    </div>
+                    <div class="entry__content">
+                        <p>
+                            문자열은 "" 이나 ''안에 넣어준다.<br>
+                            ""안에 "를 넣으려면 "앞에 \넣어서 \"(escape)로 만들어주면 입력이 된다.<br>
+                            typeof 인자 를 넣으면 인자의 타입(String or number)를 알려준다.
+                        </p>
+                    </div>
+                    <div class="entry__content">
+                        <p>
+                            \n : 줄바꿈<br>
+                            문자열.length : 문자열의 길이를 알려줌<br>
+                            문자열.indexOf("문자") : 해당문자가 위치한 인덱스를 알려줌<br>
+                            <input type="button" value="length" onclick="alert( '123의 길이 '+'123'.length)">
+                            <input type="button" value="indexOf" onclick="alert( '123에서 2의 index '+'123'.indexOf('2'))">
+                        </p>
+                    </div>
+                    <div class="entry__content">
+                        <p>
+                            변수란 값을 담는 그릇이다. <br>
+                            var 변수명 = 값
+                            <input type="button" value="var" onclick="var a = 1; alert('a + a = ' + a+a)">
+                        </p>
+                    </div>
 
                     <hr>
 
-                    <div class="content__page-header entry__header" id="second">
+                    <div class="content__page-header entry__header" id="third">
                         <h1 class="display-1 entry__title">
                         모각코 3회 목표
                     </h1>
