@@ -244,9 +244,33 @@
                     </div>
                     <div class="entry__content">
                         <p>
-                            변수란 값을 담는 그릇이다. <br>
+                            변수란 값을 담는 그릇이다. 숫자 뿐만 아니라 문자도 가능하다. 또한 불린도 가능<br>
                             var 변수명 = 값
-                            <input type="button" value="var" onclick="var a = 1; alert('a + a = ' + a+a)">
+                            <input type="button" value="var" onclick="var a = 1; alert(a+a)">
+                        </p>
+                    </div>
+                    <div class="entry__content">
+                        <p>
+                            == : 동등 연산자, 값이 같으면 true 다르면 false를 반환된다. java와 다르게 문자열도 비교 가능<br>
+                            === : 일치 연산자, 값이 정확하게 같으면 true 다르면 false가 반환된다.<br>
+                            1 == '1' 은 true를 반환 1 === '1' 은 false를 반환한다.<br>
+                            undefined는 값이 없는 것이고 null은 값이 프로그래머에 의해 의도적으로 값이 없는 것이다.<br>
+                            동등 연산자에서 true와 비교할 때 1은 true 0은 false로 간주한다.<br>
+                            예외적인 부분을 잘 알고 있지 않은 이상 ===을 사용하자
+                        </p>
+                    </div>
+                    <div class="entry__content">
+                        <p>
+                            !는 부정을 의미한다.<br>
+                            != : 같지 않다는 의미로 동등연산자의 정반대의 결과를 보여준다.<br>
+                            !== : 정확하게 같지 않다는 의미이다.
+                        </p>
+                    </div>
+                    <div class="entry__content">
+                        <p>
+                            promprt('인자') : 인자가 화면에 뜨면서 사용자로 부터 값을 받을 수 있다.<br>
+                            boolean의 대체제 : 숫자 0은 false 숫자 1은 true로 간주한다.''는 false '내용'은 true로 간주한다. undefined도 false라 간주한다.<br>
+                            <input type="button" value="prompt" onclick="prompt('입력해주세요')">
                         </p>
                     </div>
 
