@@ -6,7 +6,7 @@
     ================================================== -->
     <meta charset="utf-8">
     <title>2020 Algorithm - sun's blog</title>
-    <meta name="description" content="2020 Algorithm">
+    <meta name="description" content="2019 everydaystudy 9_2">
     <meta name="author" content="kim seon gyu">
 
     <!-- mobile specific metas
@@ -117,94 +117,44 @@
                     
                     <div class="content__page-header entry__header">
                         <h1 class="display-1 entry__title">
-                        1389번 케빈 베이컨의 6단계 법칙
+                        6376번 e 계산
                         </h1>
                         <ul class="entry__header-meta">
                             <li class="contents">Algorithm</li>
-                            <li class="date">Date : 2020/01/17</li>
-                            <li class="contents"><a href="https://www.acmicpc.net/problem/1389">https://www.acmicpc.net/problem/1389</a></li>
+                            <li class="date">Date : 2020/01/30</li>
+                            <li class="contents"><a href="https://www.acmicpc.net/problem/6376">https://www.acmicpc.net/problem/6376</a></li>
                         </ul>
                     </div>
                     <div class="entry__content">
-                        <p>문제요약<br>케빈 베이컨 게임은 임의의 두 사람이 최소 몇 단계 만에 이어질 수 있는지 계산하는 게임이다.<br>
-                            BOJ 유저의 수와 친구 관계가 입력으로 주어졌을 때, 케빈 베이컨의 수가 가장 작은 사람을 구하는 프로그램을 작성하시오.
-                        </p>
-                        <pre class="prettyprint prettyprinted" style>
+                        <p>문제요약<br>자연상수 e를 구하는 과정 중 n의 값에 따른 값을 구하시오.</p>
+                        <pre class="prettyprint prettyprinted">
                             <code lang='Java'>
-public class Baekjoon1389 {
-    private static int user;
-    private static int relationNum;
-    private static int[] bacon;
-    private static int[][] bfs;
-    private static boolean[] visit;
-
+public class Baekjoon6376 {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        int smallNum = 1;
-        
-        user = input.nextInt();
-        relationNum = input.nextInt();
-        bacon = new int[user];
-        bfs = new int[user + 1][user + 1];
-        visit = new boolean[user + 1];
-        for (int i = 0; i < relationNum; i++) {
-            int x = input.nextInt();
-            int y = input.nextInt();
-            bfs[x][y] = bfs[y][x] = 1;
-        }
-        for (int i = 1; i <= user; i++) {
-            bacon[i-1] = baconFunc(i);
-            visit = new boolean[user + 1];
-        }
-        for(int i = 1; i < user; i++) {
-            if(bacon[i] < bacon[smallNum-1]) {
-                smallNum = i+ 1;
+        double a = 1;
+        double e = 2.5;
+        System.out.println("n e");
+        System.out.println("- -----------");
+        System.out.println("0 1");
+        System.out.println("1 2");
+        System.out.println("2 2.5");
+        for(int i = 3; i < 10; i++) {
+            for(int j = 1; j <= i; j++) {
+                a *= j;
             }
+            e += 1/a;
+            a = 1;
+            System.out.println(i+ " " +String.format("%.9f", e));
         }
-        System.out.println(smallNum);
-    }
-
-    public static int baconFunc(int i) {
-        Queue<Integer> q = new <Integer>LinkedList();
-        int[] size = new int[2];
-        size[0] = 1;
-        int pluseNum = 1;
-        int bacon = 0;
-        
-        q.offer(i);
-        visit[i] = true;
-
-        while (!q.isEmpty()) {
-            int temp = q.poll();
-            for (int j = 1; j <= user; j++) {
-                if (bfs[temp][j] == 1 && visit[j] == false) {
-                    q.offer(j);
-                    visit[j] = true;
-                    bacon += pluseNum;
-                    size[1]++;
-                }
-            }
-            if(--size[0] == 0) {
-                size[0] = size[1];
-                size[1] = 0;
-                pluseNum++;
-            }
-        }
-        return bacon;
     }
 }
                             </code>
                         </pre>
-                        <p>bfs를 사용해서 풀었다. size배열을 사용하여 시작지점부터 거리당 돌아야하는 횟수를 저장했다.<br>
-                            또한 pluseNum 변수로 거리당 추가해야 되는 베이컨 수를 조절하였다.
-                        <div class="alert-box alert-box--error hideit">
-                            <p>bfs(너비 우선 탐색)란?<br>
-                                루트 노드(혹은 다른 임의의 노드)에서 시작해서 인접한 노드를 먼저 탐색하는 방법</p>
-                            <i class="fa fa-times alert-box__close" aria-hidden="true"></i>
-                        </div>
-                        <img src='../../images/Algorithm/solve_1389.GIF'
+                        <p>일반적인 입출력이 편한 부분은 수식 없이 출력하였고 소수점자리가 길어지는 부분을 반복문을 사용하여 출력하였다.
+                        <img src='../../images/Algorithm/solve_6376.GIF'
                             alt='solve' referrerPolicy='no-referrer' /></p>
-                    </div>
+                        </div>
+                    </article>
             </main>
 
         </div> <!-- end s-content -->
