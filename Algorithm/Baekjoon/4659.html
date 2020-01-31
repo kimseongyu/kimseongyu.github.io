@@ -117,37 +117,65 @@
                     
                     <div class="content__page-header entry__header">
                         <h1 class="display-1 entry__title">
-                        4690번 완전 세제곱
+                        4659번 비밀번호 발음하기
                         </h1>
                         <ul class="entry__header-meta">
                             <li class="contents">Algorithm</li>
-                            <li class="date">Date : 2020/01/30</li>
-                            <li class="contents"><a href="https://www.acmicpc.net/problem/4690">https://www.acmicpc.net/problem/4690</a></li>
+                            <li class="date">Date : 2020/01/31</li>
+                            <li class="contents"><a href="https://www.acmicpc.net/problem/4659">https://www.acmicpc.net/problem/4659</a></li>
                         </ul>
                     </div>
                     <div class="entry__content">
-                        <p>문제요약<br>완전 세제곱 방정식 a3 = b3 + c3 + d3을 만족하는 1보다 큰 자연수를 찾으시오</p>
+                        <p>문제요약<br>
+                            1. 모음(a,e,i,o,u) 하나를 반드시 포함하여야 한다. <br>
+                            2. 모음이 3개 혹은 자음이 3개 연속으로 오면 안 된다.<br>
+                            3. 같은 글자가 연속적으로 두번 오면 안되나, ee 와 oo는 허용한다.<br>
+                            영문자 비밀번호가 다음 조건을 만족하는지 검사하시오.
+                        </p>
                         <pre class="prettyprint prettyprinted">
                             <code lang='Java'>
-public class Baekjoon4690 {
+public class Baekjoon4659 {
     public static void main(String[] args) {
-        for(int a = 2; a <= 100; a++) {
-            for(int b = 2; b < a; b++) {
-                for(int c = b; c < a; c++) {
-                    for(int d = c; d < a; d++) {
-                        if(a*a*a == b*b*b + c*c*c + d*d*d) {
-                            System.out.printf("Cube = %d, Triple = (%d,%d,%d)\n",a,b,c,d);
-                        }
-                    }
+        Scanner input = new Scanner(System.in);
+        while(true) {
+            String password = input.next();
+            if(password.equals("end"))
+                break;
+            boolean pass = false;
+            for(int i = 0; i < password.length();i++) {
+                if(password.charAt(i) == 'a' | password.charAt(i) == 'e' | password.charAt(i) == 'i' | password.charAt(i) == 'o' | password.charAt(i) == 'u')
+                    pass = true;
+            }
+            for(int i = 1; i < password.length(); i++) {
+                if(password.charAt(i) == password.charAt(i-1)) {
+                    if(password.charAt(i) != 'e' & password.charAt(i) != 'o')
+                        pass = false;
                 }
+            }
+            for(int i = 2; i < password.length(); i++) {
+                int num1 = 0, num2 = 0, num3 = 0;
+                if(password.charAt(i-2) == 'a' | password.charAt(i-2) == 'e' | password.charAt(i-2) == 'i' | password.charAt(i-2) == 'o' | password.charAt(i-2) == 'u')
+                    num1 = 1;
+                if(password.charAt(i-1) == 'a' | password.charAt(i-1) == 'e' | password.charAt(i-1) == 'i' | password.charAt(i-1) == 'o' | password.charAt(i-1) == 'u')
+                    num2 = 1;
+                if(password.charAt(i) == 'a' | password.charAt(i) == 'e' | password.charAt(i) == 'i' | password.charAt(i) == 'o' | password.charAt(i) == 'u')
+                    num3 = 1;
+                if(num1 == num2 & num1 == num3) {
+                    pass = false;
+                }
+            }
+            if(pass) {
+                System.out.println("<"+password+"> is acceptable.");
+            }else {
+                System.out.println("<"+password+"> is not acceptable.");
             }
         }
     }
 }
                             </code>
                         </pre>
-                        <p>for문으로 문제를 해결하였다.
-                        <img src='../../images/Algorithm/solve_4690.GIF'
+                        <p>if문을 통해 각 조건을 통과시켰다.
+                        <img src='../../images/Algorithm/solve_4659.GIF'
                             alt='solve' referrerPolicy='no-referrer' /></p>
                         </div>
                     </article>
