@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>2020 Algorithm - sun's blog</title>
+    <meta name="description" content="2019 everydaystudy 9_2">
+    <meta name="author" content="kim seon gyu">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/vendor.css">
+    <link rel="stylesheet" href="../../css/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="../../js/modernizr.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+
+</head>
+
+<body class="ss-bg-white">
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader" class="dots-fade">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <div id="top" class="s-wrap site-wrapper">
+
+        <!-- site header
+        ================================================== -->
+        <header class="s-header header">
+
+            <div class="header__top">
+                <div class="header__logo">
+                    <a class="site-logo" href="../../index.html">
+                        <img src="../../images/logo.svg" alt="Homepage">
+                    </a>
+                </div>
+            </div>
+
+            <nav class="header__nav-wrap">
+
+                <ul class="header__nav">
+                    <li><a href="../../index.html" title="">Home</a></li>
+                    <li class="has-children">
+                        <a href="#0" title="">Categories</a>
+                        <ul class="sub-menu">
+                        <li><a href="../../mogaco/mogaco.html">모각코</a></li>
+                        <li><a href="../../everystudy/everydaystudy.html">매일매일스터디</a></li>
+                        <li class="current"><a href="../../Algorithm/algorithm.html">알고리즘</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-children">
+                        <a href="#0" title="">Blog Posts</a>
+                        <ul class="sub-menu">
+                        <li><a href="../../Systemhacking/Systemhacking.html">Systemhacking</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../../page-about.html" title="">About</a></li>
+                </ul> <!-- end header__nav -->
+
+                <ul class="header__social">
+                    <li class="ss-facebook">
+                        <a href="https://www.facebook.com/profile.php?id=100010493671942">
+                            <span class="screen-reader-text">Facebook</span>
+                        </a>
+                    </li>
+                    <li class="ss-twitter">
+                        <a href="#0">
+                            <span class="screen-reader-text">Twitter</span>
+                        </a>
+                    </li>
+                    <li class="ss-github">
+                        <a href="https://github.com/kimseongyu">
+                            <span class="screen-reader-text">Github</span>
+                        </a>
+                    </li>
+                    <li class="ss-naver">
+                        <a href="https://blog.naver.com/kskksk0925">
+                            <span class="screen-reader-text">Naver</span>
+                        </a>
+                    </li>
+                </ul>
+
+            </nav> <!-- end header__nav-wrap -->
+
+        </header> <!-- end s-header -->
+
+
+        <!-- site content
+        ================================================== -->
+        <div class="s-content content">
+            
+            <main class="row content__page">
+                
+                <article class="column large-full entry format-gallery">
+                    
+                    <div class="content__page-header entry__header">
+                        <h1 class="display-1 entry__title">
+                        Disjoint Set (Union Find)
+                        </h1>
+                        <ul class="entry__header-meta">
+                            <li class="contents">Algorithm</li>
+                            <li class="date">Date : 2020/02/07</li>
+                        </ul>
+                    </div>
+                    <div class="entry__content">
+                        <h3>Disjoint Set (서로소 집합 자료구조) 이란?</h3>
+                        <p>서로 중복되지 않는 부분 집합들로 나눠진 원소들에 대한 정보를 저장하고 조작하는 자료구조이다.</p>
+                        <p><img src="../../images/Algorithm/Technique/DisjointSet1.png"
+                                referrerpolicy="no-referrer" alt="img"><br>
+                        다음과 같은 원소들이 있을 때, 각 원소들이 연결되어 있는 관계를 입력 하면 다음과 같은 집합이 나온다.<img
+                                src="../../images/Algorithm/Technique/DisjointSet2.png"
+                                referrerpolicy="no-referrer" alt="img"></p>
+                        <hr>
+
+                        <h2>구현</h2>
+                        <p>배열을 이용해서 Tree를 만들어 구현하며 Root노드를 집합을 구분하는 ID로 사용한다.
+                        <img src="../../images/Algorithm/Technique/DisjointSet3.png" referrerpolicy="no-referrer" alt="Tree"></p>
+                        <h5>초기화</h5>
+                        <pre>
+                            <code class='language-java' lang='java'>
+int[] root = new int[size];
+for(int i = 0; i &lt; size; i++)
+    root[i] = i;
+                            </code>
+                        </pre>
+                        <p>원소들간에 연결된 정보가 없기 때문에 Root로 자기 자신을 가지고 있다.</p>
+                        <h5>Find 함수</h5>
+                        <pre><code class='language-java' lang='java'>
+int Find(int x){
+    if(x == root[x]){
+        return x;
+    }else{
+        int y = Find(root[x]);
+        root[x] = y;
+        return y;
+    }
+}
+                        </code></pre>
+                        <p>x가 Root인 경우 x를 반환한다.<br>
+                        x가 Root가 아니면 Root를 찾을 때 까지 반복한다.</p>
+                        <h5>Union 함수</h5>
+                        <pre>
+                            <code class='language-java' lang='java'>
+void Union(int x, int y){
+    x = Find(x);
+    y = Find(y);
+    root[y] = x;
+}
+                            </code>
+                        </pre>
+                        <p>x와 y의 원소가 입력되면 x의 Root 노드와 y의 Root 노드를 저장해서 y의 Root 노드를 x로 설정해준다.</p>
+                        
+                        <hr>
+
+                        <h2>최적화</h2>
+                        <h5>초기화</h5>
+                        <pre>
+                            <code class='language-java' lang='java'>
+int root[size];
+int rank[size];
+for (int i = 0; i &lt; size; i++) {
+    root[i] = i;
+    rank[i] = 0;
+}
+                            </code>
+                        </pre>
+                        <p>트리의 높이를 저장해줄 rank를 초기화 시켜준다.</p>
+                        <h5>Find 함수 최적화</h5>
+                        <pre>
+                            <code class='language-java' lang='java'>
+int Find(int x){
+    if(rott[x] == x){
+        return x;
+    } else {
+        return root[x] = find(root[x]);
+    }
+}
+                            </code>
+                        </pre>
+                        <p>트리의 구조가 최대가 될 때 시간 복잡도가 최악이 되기 때문에<br>
+                        경로 압축을 통해 Find하면서 만난 모든 값의 부모 노드를 root로 만들어 최적화 시켜준다.</p>
+                        <h5>Union 함수 최적화</h5>
+                        <pre>
+                            <code class='language-java' lang='java'>
+void Union(int x, int y){
+    x = find(x);
+    y = find(y);
+    
+    if(x == y)
+        return;
+    
+    if(rank[x] &lt; rank[y]) {
+        root[x] = y;
+    } else {
+        root[y] = x;
+        if(rank[x] == rank[y])
+        rank[x]++;
+    }
+}
+                            </code>
+                        </pre>
+                        <p>x, y의 Root가 같으면 같은 트리임으로 합치지 않는다.<br>
+                            x, y의 높이를 비교하여 높이가 늦은 트리를 높이가 높은 트리 밑에 넣는다.<br>
+                            만약 높이가 같다면 합친 후 x의 높이를 하나 더해준다.</p>
+                    </div>
+                </article>
+            </main>
+
+        </div> <!-- end s-content -->
+
+        <!-- footer
+        ================================================== -->
+        <footer class="s-footer footer">
+            <div class="row">
+                <div class="column large-full footer__content">
+                    <div class="footer__copyright">
+                        <span>© Copyright Typerite 2019</span> 
+                        <span>Design by <a href="https://www.styleshout.com/">StyleShout</a></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"></a>
+            </div>
+        </footer>
+
+    </div> <!-- end s-wrap -->
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/plugins.js"></script>
+    <script src="../../js/main.js"></script>
+
+</body>
+</html>
