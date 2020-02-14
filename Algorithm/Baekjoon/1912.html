@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>2020 Algorithm - sun's blog</title>
+    <meta name="description" content="2019 everydaystudy 9_2">
+    <meta name="author" content="kim seon gyu">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/vendor.css">
+    <link rel="stylesheet" href="../../css/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="../../js/modernizr.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+
+</head>
+
+<body class="ss-bg-white">
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader" class="dots-fade">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <div id="top" class="s-wrap site-wrapper">
+
+        <!-- site header
+        ================================================== -->
+        <header class="s-header header">
+
+            <div class="header__top">
+                <div class="header__logo">
+                    <a class="site-logo" href="../../index.html">
+                        <img src="../../images/logo.svg" alt="Homepage">
+                    </a>
+                </div>
+            </div>
+
+            <nav class="header__nav-wrap">
+
+                <ul class="header__nav">
+                    <li><a href="../../index.html" title="">Home</a></li>
+                    <li class="has-children">
+                        <a href="#0" title="">Categories</a>
+                        <ul class="sub-menu">
+                        <li><a href="../../mogaco/mogaco.html">모각코</a></li>
+                        <li><a href="../../everystudy/everydaystudy.html">매일매일스터디</a></li>
+                        <li class="current"><a href="../../Algorithm/algorithm.html">알고리즘</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-children">
+                        <a href="#0" title="">Blog Posts</a>
+                        <ul class="sub-menu">
+                        <li><a href="../../Systemhacking/Systemhacking.html">Systemhacking</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../../page-about.html" title="">About</a></li>
+                </ul> <!-- end header__nav -->
+
+                <ul class="header__social">
+                    <li class="ss-facebook">
+                        <a href="https://www.facebook.com/profile.php?id=100010493671942">
+                            <span class="screen-reader-text">Facebook</span>
+                        </a>
+                    </li>
+                    <li class="ss-twitter">
+                        <a href="#0">
+                            <span class="screen-reader-text">Twitter</span>
+                        </a>
+                    </li>
+                    <li class="ss-github">
+                        <a href="https://github.com/kimseongyu">
+                            <span class="screen-reader-text">Github</span>
+                        </a>
+                    </li>
+                    <li class="ss-naver">
+                        <a href="https://blog.naver.com/kskksk0925">
+                            <span class="screen-reader-text">Naver</span>
+                        </a>
+                    </li>
+                </ul>
+
+            </nav> <!-- end header__nav-wrap -->
+
+        </header> <!-- end s-header -->
+
+
+        <!-- site content
+        ================================================== -->
+        <div class="s-content content">
+            
+            <main class="row content__page">
+                
+                <article class="column large-full entry format-gallery">
+                    
+                    <div class="content__page-header entry__header">
+                        <h1 class="display-1 entry__title">
+                        1912번 연속합
+                        </h1>
+                        <ul class="entry__header-meta">
+                            <li class="contents">Algorithm</li>
+                            <li class="contents">Java</li>
+                            <li class="date">Date : 2020/02/14</li>
+                            <li class="contents"><a href="https://www.acmicpc.net/problem/1912">https://www.acmicpc.net/problem/1912</a></li>
+                        </ul>
+                    </div>
+                    <div class="entry__content">
+                        <p>
+                            문제요약<br>
+                            연속된 몇 개의 수를 선택해서 구할 수 있는 합 중 가장 큰 합을 구하시오.
+                        </p>
+                        <pre class="prettyprint prettyprinted">
+                            <code lang='Java'>
+public class Baekjoon1912 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
+        int a = input.nextInt();
+        int[] b = new int[a];
+        for(int i = 0; i < a; i++)
+            b[i] = input.nextInt();
+        int c = 0;
+        for(int i = 0; i < a; i++) {
+            for(int j = 0; j < a-i; j++) {
+                int d = 0;
+                for(int k = 0 ; k <= i; k++) {
+                    d += b[j+k];
+                }
+                c = Math.max(c, d);
+            }
+        }
+        System.out.print(c);
+    }
+}
+                            </code>
+                        </pre>
+                        <p>
+                            모든 경우의 수를 통해 문제를 푸는 백트래킹을 통해 문제를 풀려고 했지만 시간 초과가 떠서 다른 방법으로 시도를 해 보았다.
+                        </p>
+                        <pre class="prettyprint prettyprinted">
+                            <code lang='Java'>
+public class Baekjoon1912 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
+        int a = input.nextInt();
+        int[] b = new int[a];
+        int[] c = new int[a];
+        for(int i = 0; i < a; i++)
+            b[i] = input.nextInt();
+        int d = b[0];
+        c[0] = b[0];
+        for(int i = 1; i < a; i++) {
+            c[i] = Math.max(b[i], b[i] + c[i-1]);
+            d = Math.max(d, c[i]);
+        }
+        System.out.print(d);
+    }
+}
+                            </code>
+                        </pre>
+                        <p>                      
+                            다이나믹 프로그래밍을 통해 이전에 더한 값들과 새로운 값 중 큰 값을 배열에 저장하도록 하였다.<br>
+                            그리고 배열에 저장된 값 중에 가장 큰값을 출력하도록 하였다. 
+                            <img src='../../images/Algorithm/solve_1912.GIF' alt='solve' referrerPolicy='no-referrer' />
+                        </p>
+                    </div>
+                </article>
+            </main>
+
+        </div> <!-- end s-content -->
+
+        <!-- footer
+        ================================================== -->
+        <footer class="s-footer footer">
+            <div class="row">
+                <div class="column large-full footer__content">
+                    <div class="footer__copyright">
+                        <span>© Copyright Typerite 2019</span> 
+                        <span>Design by <a href="https://www.styleshout.com/">StyleShout</a></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"></a>
+            </div>
+        </footer>
+
+    </div> <!-- end s-wrap -->
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/plugins.js"></script>
+    <script src="../../js/main.js"></script>
+
+</body>
+</html>
