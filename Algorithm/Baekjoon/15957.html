@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>2020 Algorithm - sun's blog</title>
+    <meta name="description" content="2019 everydaystudy 9_2">
+    <meta name="author" content="kim seon gyu">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/vendor.css">
+    <link rel="stylesheet" href="../../css/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="../../js/modernizr.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+
+</head>
+
+<body class="ss-bg-white">
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader" class="dots-fade">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <div id="top" class="s-wrap site-wrapper">
+
+        <!-- site header
+        ================================================== -->
+        <header class="s-header header">
+
+            <div class="header__top">
+                <div class="header__logo">
+                    <a class="site-logo" href="../../index.html">
+                        <img src="../../images/logo.svg" alt="Homepage">
+                    </a>
+                </div>
+            </div>
+
+            <nav class="header__nav-wrap">
+
+                <ul class="header__nav">
+                    <li><a href="../../index.html" title="">Home</a></li>
+                    <li class="has-children">
+                        <a href="#0" title="">Categories</a>
+                        <ul class="sub-menu">
+                        <li><a href="../../mogaco/mogaco.html">모각코</a></li>
+                        <li><a href="../../everystudy/everydaystudy.html">매일매일스터디</a></li>
+                        <li class="current"><a href="../../Algorithm/algorithm.html">알고리즘</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-children">
+                        <a href="#0" title="">Blog Posts</a>
+                        <ul class="sub-menu">
+                        <li><a href="../../Systemhacking/Systemhacking.html">Systemhacking</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../../page-about.html" title="">About</a></li>
+                </ul> <!-- end header__nav -->
+
+                <ul class="header__social">
+                    <li class="ss-facebook">
+                        <a href="https://www.facebook.com/profile.php?id=100010493671942">
+                            <span class="screen-reader-text">Facebook</span>
+                        </a>
+                    </li>
+                    <li class="ss-twitter">
+                        <a href="#0">
+                            <span class="screen-reader-text">Twitter</span>
+                        </a>
+                    </li>
+                    <li class="ss-github">
+                        <a href="https://github.com/kimseongyu">
+                            <span class="screen-reader-text">Github</span>
+                        </a>
+                    </li>
+                    <li class="ss-naver">
+                        <a href="https://blog.naver.com/kskksk0925">
+                            <span class="screen-reader-text">Naver</span>
+                        </a>
+                    </li>
+                </ul>
+
+            </nav> <!-- end header__nav-wrap -->
+
+        </header> <!-- end s-header -->
+
+
+        <!-- site content
+        ================================================== -->
+        <div class="s-content content">
+            
+            <main class="row content__page">
+                
+                <article class="column large-full entry format-gallery">
+                    
+                    <div class="content__page-header entry__header">
+                        <h1 class="display-1 entry__title">
+                        15957번 음악 추천
+                        </h1>
+                        <ul class="entry__header-meta">
+                            <li class="contents">Algorithm</li>
+                            <li class="contents">Java</li>
+                            <li class="date">Date : 2020/02/12</li>
+                            <li class="contents"><a href="https://www.acmicpc.net/problem/15957">https://www.acmicpc.net/problem/15957</a></li>
+                        </ul>
+                    </div>
+                    <div class="entry__content">
+                        <p>
+                            문제요약<br>
+                            음악 간 유사도를 트리의 형태로 만든 뒤 사용자의 입력에 따라 추천할 음악을 결정하는 알고리즘을 만들려고 한다.<br>
+                            이 알고리즘의 가중치에는 노드의 수로 나누어떨어지지 않는 경우 몫만이 분배된다.<br>
+                            가수의 평균 점수는 해당 가수의 노래에 나눠진 가중치의 총합에 해당 가수의 노래의 수를 나누어서 얻을 수 있다.<br>
+                            곡의 수 N, 추천 알고리즘의 결과 데이터의 수 K, 목표 점수 J가 주어진다.<br>
+                            2번째 줄에는 N-1개의 곡 번호가 주어지는데, 이는 2번 곡부터 해당 곡의 부모 노드가 되는 곡의 번호이다.<br>
+                            3번째 줄에는 1번 곡부터 해당 곡을 부른 가수의 번호 N개가 주어진다.<br>
+                            다음 K개의 줄에 추천 알고리즘의 결과 데이터가 하나씩 주어진다.<br>
+                            각 줄의 처음에는 데이터가 계산된 시간, 다음에는 점수가 부여되는 서브트리의 루트가 되는 곡의 번호, 마지막에는 서브트리에 부여할 가중치가 주어진다.<br>
+                            출력은 1번 곡부터 해당 곡을 부른 가수의 평균 점수가 J를 넘게 되는 시간을 출력한다.<br>
+                            점수가 J를 넘는 일이 없는 경우 -1을 출력한다.
+                        </p>
+                        <p>
+                            참고 사이트 <a href="https://tech.kakao.com/2018/08/09/code-festival-2018-round-1/">https://tech.kakao.com/2018/08/09/code-festival-2018-round-1/</a><br>
+                            참고 목록<br>
+                            Tree Traversal Array<br>
+                            Segment Tree<br>
+                            병렬 이분 탐색
+                        </p>
+                    </div>
+                </article>
+            </main>
+
+        </div> <!-- end s-content -->
+
+        <!-- footer
+        ================================================== -->
+        <footer class="s-footer footer">
+            <div class="row">
+                <div class="column large-full footer__content">
+                    <div class="footer__copyright">
+                        <span>© Copyright Typerite 2019</span> 
+                        <span>Design by <a href="https://www.styleshout.com/">StyleShout</a></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"></a>
+            </div>
+        </footer>
+
+    </div> <!-- end s-wrap -->
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/plugins.js"></script>
+    <script src="../../js/main.js"></script>
+
+</body>
+</html>
