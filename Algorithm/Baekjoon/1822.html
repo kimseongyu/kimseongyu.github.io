@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>2020 Algorithm - sun's blog</title>
+    <meta name="description" content="Algorithm">
+    <meta name="author" content="kim seon gyu">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/vendor.css">
+    <link rel="stylesheet" href="../../css/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="../../js/modernizr.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+
+</head>
+
+<body class="ss-bg-white">
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader" class="dots-fade">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <div id="top" class="s-wrap site-wrapper">
+
+        <!-- site header
+        ================================================== -->
+        <header class="s-header header">
+
+            <div class="header__top">
+                <div class="header__logo">
+                    <a class="site-logo" href="../../index.html">
+                        <img src="../../images/logo.svg" alt="Homepage">
+                    </a>
+                </div>
+            </div>
+
+            <nav class="header__nav-wrap">
+
+                <ul class="header__nav">
+                    <li><a href="../../index.html" title="">Home</a></li>
+                    <li class="has-children">
+                        <a href="#0" title="">Categories</a>
+                        <ul class="sub-menu">
+                        <li><a href="../../mogaco/mogaco.html">모각코</a></li>
+                        <li><a href="../../everystudy/everydaystudy.html">매일매일스터디</a></li>
+                        <li class="current"><a href="../../Algorithm/algorithm.html">알고리즘</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-children">
+                        <a href="#0" title="">Blog Posts</a>
+                        <ul class="sub-menu">
+                        <li><a href="../../Systemhacking/Systemhacking.html">Systemhacking</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../../page-about.html" title="">About</a></li>
+                </ul> <!-- end header__nav -->
+
+                <ul class="header__social">
+                    <li class="ss-facebook">
+                        <a href="https://www.facebook.com/profile.php?id=100010493671942">
+                            <span class="screen-reader-text">Facebook</span>
+                        </a>
+                    </li>
+                    <li class="ss-twitter">
+                        <a href="#0">
+                            <span class="screen-reader-text">Twitter</span>
+                        </a>
+                    </li>
+                    <li class="ss-github">
+                        <a href="https://github.com/kimseongyu">
+                            <span class="screen-reader-text">Github</span>
+                        </a>
+                    </li>
+                    <li class="ss-naver">
+                        <a href="https://blog.naver.com/kskksk0925">
+                            <span class="screen-reader-text">Naver</span>
+                        </a>
+                    </li>
+                </ul>
+
+            </nav> <!-- end header__nav-wrap -->
+
+        </header> <!-- end s-header -->
+
+
+        <!-- site content
+        ================================================== -->
+        <div class="s-content content">
+            
+            <main class="row content__page">
+                
+                <article class="column large-full entry format-gallery">
+                    
+                    <div class="content__page-header entry__header">
+                        <h1 class="display-1 entry__title">
+                        1822번 차집합
+                        </h1>
+                        <ul class="entry__header-meta">
+                            <li class="contents">Algorithm</li>
+                            <li class="contents">Java</li>
+                            <li class="date">Date : 2020/04/28</li>
+                            <li class="contents"><a href="https://www.acmicpc.net/problem/1822">https://www.acmicpc.net/problem/1822</a></li>
+                        </ul>
+                    </div>
+                    <div class="entry__content">
+                        <p>
+                            문제요약<br>
+                            몇 개의 자연수로 이루어진 두 집합 A와 B가 있다.<br>
+                            집합 A에는 속하면서 집합 B에는 속하지 않는 모든 원소를 구하는 프로그램을 작성하시오.
+                        </p>
+                        <pre class="prettyprint prettyprinted">
+                            <code lang='Java'>
+public class Baekjoon1822 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int[] a = new int[n];
+        for(int i = 0; i < n; i++)
+            a[i] = sc.nextInt();
+        
+        Arrays.sort(a);
+        int[] b = a.clone();
+        
+        int c = n;
+        for(int i = 0; i < m; i++) {
+            int num = sc.nextInt();
+            int mid, left = 0, right = n-1;
+            while(right >= left) {
+                mid = (left + right) / 2;
+                if(num == a[mid]) {
+                    b[mid] = 0;
+                    c--;
+                    break;
+                }else if(num < a[mid] ) {
+                    right = mid - 1;
+                }else {
+                    left = mid + 1;
+                }
+            }
+        }
+        
+        if(c == 0) {
+            System.out.print(0);
+        }else {
+            System.out.println(c);
+            for(int i = 0; i < n; i++)
+                if(b[i] != 0)
+                    System.out.print(b[i] + " ");
+        }
+    }
+}
+                            </code>
+                        </pre>
+                        <p>
+                            a배열에 a집합의 원소를 입력 받은 뒤에 원소들을 정렬시켜 준다.<br>
+                            정렬시킨 배열을 하나 복사하여 b배열을 만든다. 이때 얕은 복사를 하면 주소값이 복사됨으로 깊은 복사를 해준다.<br>
+                            b집합의 원소를 하나씩 입력 받으면서 a배열에 대해 이진 탐색을 해준다.<br>
+                            a배열이 원소를 가지고 있다면 b배열의 인덱스 값을 0으로 바꾸어주고 배열이 가지고 있는 원소의 값인 c를 하나 줄인다.<br>
+                            원소가 없으면 0만 출력하고 원소가 있으면 갯수와 원소를 출력한다.
+                            <img src='../../images/Algorithm/Baekjoon/solve_1822.GIF' alt='solve' referrerPolicy='no-referrer' />
+                        </p>
+                    </div>
+                </article>
+            </main>
+
+        </div> <!-- end s-content -->
+
+        <!-- footer
+        ================================================== -->
+        <footer class="s-footer footer">
+            <div class="row">
+                <div class="column large-full footer__content">
+                    <div class="footer__copyright">
+                        <span>© Copyright Typerite 2019</span> 
+                        <span>Design by <a href="https://www.styleshout.com/">StyleShout</a></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"></a>
+            </div>
+        </footer>
+
+    </div> <!-- end s-wrap -->
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/plugins.js"></script>
+    <script src="../../js/main.js"></script>
+
+</body>
+</html>
