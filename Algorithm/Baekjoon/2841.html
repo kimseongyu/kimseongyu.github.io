@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>2020 Algorithm - sun's blog</title>
+    <meta name="description" content="Algorithm">
+    <meta name="author" content="kim seon gyu">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/vendor.css">
+    <link rel="stylesheet" href="../../css/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="../../js/modernizr.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+
+</head>
+
+<body class="ss-bg-white">
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader" class="dots-fade">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <div id="top" class="s-wrap site-wrapper">
+
+        <!-- site header
+        ================================================== -->
+        <header class="s-header header">
+
+            <div class="header__top">
+                <div class="header__logo">
+                    <a class="site-logo" href="../../index.html">
+                        <img src="../../images/logo.svg" alt="Homepage">
+                    </a>
+                </div>
+            </div>
+
+            <nav class="header__nav-wrap">
+
+                <ul class="header__nav">
+                    <li><a href="../../index.html" title="">Home</a></li>
+                    <li class="has-children">
+                        <a href="#0" title="">Categories</a>
+                        <ul class="sub-menu">
+                        <li><a href="../../mogaco/mogaco.html">모각코</a></li>
+                        <li><a href="../../everystudy/everydaystudy.html">매일매일스터디</a></li>
+                        <li class="current"><a href="../../Algorithm/algorithm.html">알고리즘</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-children">
+                        <a href="#0" title="">Blog Posts</a>
+                        <ul class="sub-menu">
+                        <li><a href="../../Systemhacking/Systemhacking.html">Systemhacking</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../../page-about.html" title="">About</a></li>
+                </ul> <!-- end header__nav -->
+
+                <ul class="header__social">
+                    <li class="ss-facebook">
+                        <a href="https://www.facebook.com/profile.php?id=100010493671942">
+                            <span class="screen-reader-text">Facebook</span>
+                        </a>
+                    </li>
+                    <li class="ss-twitter">
+                        <a href="#0">
+                            <span class="screen-reader-text">Twitter</span>
+                        </a>
+                    </li>
+                    <li class="ss-github">
+                        <a href="https://github.com/kimseongyu">
+                            <span class="screen-reader-text">Github</span>
+                        </a>
+                    </li>
+                    <li class="ss-naver">
+                        <a href="https://blog.naver.com/kskksk0925">
+                            <span class="screen-reader-text">Naver</span>
+                        </a>
+                    </li>
+                </ul>
+
+            </nav> <!-- end header__nav-wrap -->
+
+        </header> <!-- end s-header -->
+
+
+        <!-- site content
+        ================================================== -->
+        <div class="s-content content">
+            
+            <main class="row content__page">
+                
+                <article class="column large-full entry format-gallery">
+                    
+                    <div class="content__page-header entry__header">
+                        <h1 class="display-1 entry__title">
+                        2841번 외계인의 기타 연주
+                        </h1>
+                        <ul class="entry__header-meta">
+                            <li class="contents">Algorithm</li>
+                            <li class="contents">Java</li>
+                            <li class="date">Date : 2020/06/01</li>
+                            <li class="contents"><a href="https://www.acmicpc.net/problem/2841">https://www.acmicpc.net/problem/2841</a></li>
+                        </ul>
+                    </div>
+                    <div class="entry__content">
+                        <p>
+                            문제요약<br>
+                            보통 기타는 1번 줄부터 6번 줄까지 총 6개의 줄이 있고, 각 줄은 P개의 프렛으로 나누어져 있다. 프렛의 번호도 1번부터 P번까지 나누어져 있다.<br>
+
+                            멜로디는 음의 연속이고, 각 음은 줄에서 해당하는 프렛을 누르고 줄을 튕기면 연주할 수 있다. 예를 들면, 4번 줄의 8번 프렛을 누르고 튕길 수 있다. 만약, 어떤 줄의 프렛을 여러 개 누르고 있다면, 가장 높은 프렛의 음이 발생한다.<br>
+
+                            예를 들어, 3번 줄의 5번 프렛을 이미 누르고 있다고 하자. 이때, 7번 프렛을 누른 음을 연주하려면, 5번 프렛을 누르는 손을 떼지 않고 다른 손가락으로 7번 프렛을 누르고 줄을 튕기면 된다. 여기서 2번 프렛의 음을 연주하려고 한다면, 5번과 7번을 누르던 손가락을 뗀 다음에 2번 프렛을 누르고 연주해야 한다.<br>
+
+                            이렇게 손가락으로 프렛을 한 번 누르거나 떼는 것을 손가락을 한 번 움직였다고 한다. 어떤 멜로디가 주어졌을 때, 손가락의 가장 적게 움직이는 회수를 구하는 프로그램을 작성하시오.
+                        </p>
+                        <pre class="prettyprint prettyprinted">
+                            <code lang='Java'>
+public class Baekjoon2841 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        Stack<Integer> one = new Stack<>();
+        Stack<Integer> two = new Stack<>();
+        Stack<Integer> three = new Stack<>();
+        Stack<Integer> four = new Stack<>();
+        Stack<Integer> five = new Stack<>();
+        Stack<Integer> six = new Stack<>();
+        int n = sc.nextInt();
+        int p = sc.nextInt();
+        
+        int count = 0;
+        while(n-->0) {
+            int f = sc.nextInt();
+            int s = sc.nextInt();
+            switch(f) {
+            case 1:
+                count += finger(one,s);
+                break;
+            case 2:
+                count += finger(two,s);
+                break;
+            case 3:
+                count += finger(three,s);
+                break;
+            case 4:
+                count += finger(four,s);
+                break;
+            case 5:
+                count += finger(five,s);
+                break;
+            case 6:
+                count += finger(six,s);
+                break;
+            }
+        }
+        System.out.print(count);
+    }
+    
+    public static int finger(Stack<Integer> st,int num) {
+        int count = 0;
+        if(st.isEmpty()) {
+            st.push(num);
+            count++;
+        }
+        while(!st.peek().equals(num)) {
+            if(st.peek() > num) {
+                st.pop();
+                count++;
+            }else if(st.peek() < num){
+                st.push(num);
+                count++;
+            }
+            if(st.isEmpty()) {
+                st.push(num);
+                count++;
+            }
+        }
+        return count;
+    }
+}
+                            </code>
+                        </pre>
+                        <p>
+                            기타의 줄 별로 stack을 생성하고 연주할 줄의 피렛이 스택의 가장 위에 오도록 한다.
+                            <img src='../../images/Algorithm/Baekjoon/solve_2841.GIF' alt='solve' referrerPolicy='no-referrer' />
+                        </p>
+                    </div>
+                </article>
+            </main>
+
+        </div> <!-- end s-content -->
+
+        <!-- footer
+        ================================================== -->
+        <footer class="s-footer footer">
+            <div class="row">
+                <div class="column large-full footer__content">
+                    <div class="footer__copyright">
+                        <span>© Copyright Typerite 2019</span> 
+                        <span>Design by <a href="https://www.styleshout.com/">StyleShout</a></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"></a>
+            </div>
+        </footer>
+
+    </div> <!-- end s-wrap -->
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/plugins.js"></script>
+    <script src="../../js/main.js"></script>
+
+</body>
+</html>
