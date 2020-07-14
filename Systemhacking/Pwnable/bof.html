@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Systemhacking - sun's blog</title>
+    <meta name="description" content="2020 Systemhacking">
+    <meta name="author" content="kim seon gyu">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/vendor.css">
+    <link rel="stylesheet" href="../../css/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="../../js/modernizr.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+
+</head>
+
+<body class="ss-bg-white">
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader" class="dots-fade">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <div id="top" class="s-wrap site-wrapper">
+
+        <!-- site header
+        ================================================== -->
+        <header class="s-header header">
+
+            <div class="header__top">
+                <div class="header__logo">
+                    <a class="site-logo" href="../../index.html">
+                        <img src="../../images/logo.svg" alt="Homepage">
+                    </a>
+                </div>
+            </div>
+
+            <nav class="header__nav-wrap">
+
+                <ul class="header__nav">
+                    <li><a href="../../index.html" title="">Home</a></li>
+                    <li class="has-children">
+                        <a href="#0" title="">Categories</a>
+                        <ul class="sub-menu">
+                            <li><a href="../../mogaco/mogaco.html">모각코</a></li>
+                            <li><a href="../../everystudy/everydaystudy.html">매일매일스터디</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-children">
+                        <a href="#0" title="">Blog Posts</a>
+                        <ul class="sub-menu">
+                            <li class="current"><a href="../Systemhacking.html">Systemhacking</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../../page-about.html" title="">About</a></li>
+                </ul> <!-- end header__nav -->
+
+                <ul class="header__social">
+                    <li class="ss-facebook">
+                        <a href="https://www.facebook.com/profile.php?id=100010493671942">
+                            <span class="screen-reader-text">Facebook</span>
+                        </a>
+                    </li>
+                    <li class="ss-twitter">
+                        <a href="#0">
+                            <span class="screen-reader-text">Twitter</span>
+                        </a>
+                    </li>
+                    <li class="ss-github">
+                        <a href="https://github.com/kimseongyu">
+                            <span class="screen-reader-text">Github</span>
+                        </a>
+                    </li>
+                    <li class="ss-naver">
+                        <a href="https://blog.naver.com/kskksk0925">
+                            <span class="screen-reader-text">Naver</span>
+                        </a>
+                    </li>
+                </ul>
+
+            </nav> <!-- end header__nav-wrap -->
+
+        </header> <!-- end s-header -->
+
+
+        <!-- site content
+        ================================================== -->
+        <div class="s-content content">
+
+            <main class="row content__page">
+
+                <article class="column large-full entry format-gallery">
+
+                    <div class="content__page-header entry__header" id="lab01">
+                        <h1 class="display-1 entry__title">
+                            bof
+                        </h1>
+                        <ul class="entry__header-meta">
+                            <li class="contents">Systemhacking</li>
+                            <li class="date">Date : 2020/07/14</li>
+                        </ul>
+                    </div>
+                    <div class="entry__content">
+                        <p>bof 문제에서 주어진 c언어 코드</p>
+                        <pre><code class='language-c' lang='c'>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdlib.h&gt;
+
+void func(int key){
+    char overflowme[32];
+    printf(&quot;overflow me : &quot;);
+    gets(overflowme);	// smash me!
+    if(key == 0xcafebabe){
+        system(&quot;/bin/sh&quot;);
+    }
+    else{
+        printf(&quot;Nah..\n&quot;);
+    }
+}
+
+int main(int argc, char* argv[]){
+    func(0xdeadbeef);
+    return 0;
+}
+                            </code></pre>
+                        <p>gets함수로 입력받기 때문에 gets함수의 취약점인 Buffer Overflow를 활용하여 overflowme변수를 overflow시켜서 key값을 변경하면 문제를
+                            해결할 수 있다는 것을 알 수 있다.
+                        </p>
+                        <p>bof 문제의 assembly 코드</p>
+                        <pre><code class='language-assembly' lang='assembly'>0x0000062c &lt;+0&gt;:	push   ebp
+0x0000062d &lt;+1&gt;:	mov    ebp,esp
+0x0000062f &lt;+3&gt;:	sub    esp,0x48
+0x00000632 &lt;+6&gt;:	mov    eax,gs:0x14
+0x00000638 &lt;+12&gt;:	mov    DWORD PTR [ebp-0xc],eax
+0x0000063b &lt;+15&gt;:	xor    eax,eax
+0x0000063d &lt;+17&gt;:	mov    DWORD PTR [esp],0x78c		#0x78 == &quot;overflow me : &quot;
+0x00000644 &lt;+24&gt;:	call   0x645 &lt;func+25&gt;			#puts call
+0x00000649 &lt;+29&gt;:	lea    eax,[ebp-0x2c]			#ebp-0x2c를 eax로 이동
+0x0000064c &lt;+32&gt;:	mov    DWORD PTR [esp],eax
+0x0000064f &lt;+35&gt;:	call   0x650 &lt;func+36&gt;			#gets call
+0x00000654 &lt;+40&gt;:	cmp    DWORD PTR [ebp+0x8],0xcafebabe	#ebp+0x8이 0xcafebabe와 같은지 검사
+0x0000065b &lt;+47&gt;:	jne    0x66b &lt;func+63&gt;			#같지 않으면 func+63으로 jump
+0x0000065d &lt;+49&gt;:	mov    DWORD PTR [esp],0x79b		#0x79b == &quot;/bin/sh&quot;
+0x00000664 &lt;+56&gt;:	call   0x665 &lt;func+57&gt;			#system call
+0x00000669 &lt;+61&gt;:	jmp    0x677 &lt;func+75&gt;			#func+75로 jump
+0x0000066b &lt;+63&gt;:	mov    DWORD PTR [esp],0x7a3		#0x7a3 == &quot;Nah..&quot;
+0x00000672 &lt;+70&gt;:	call   0x673 &lt;func+71&gt;			#puts call
+0x00000677 &lt;+75&gt;:	mov    eax,DWORD PTR [ebp-0xc]
+0x0000067a &lt;+78&gt;:	xor    eax,DWORD PTR gs:0x14
+0x00000681 &lt;+85&gt;:	je     0x688 &lt;func+92&gt;
+0x00000683 &lt;+87&gt;:	call   0x684 &lt;func+88&gt;
+0x00000688 &lt;+92&gt;:	leave  
+0x00000689 &lt;+93&gt;:	ret
+                            </code></pre>
+                        <p>Buffer Overflow가 func함수에서 일어나기 때문에 func함수의 assembly 코드를 확인하였다.<br>
+                            +29에서 ebp-0x2c를 eax로 이동하여 gets함수의 인자로 주기 때문에 ebp-0x2c는 overflowme의 주소인 것을 알 수 있다.<br>
+                            +40에서 ebp+0x8이 0xcafebabe와 같은지 검사하기 때문에 ebp+0x8은 key의 주소인 것을 알 수 있다.<br>
+                            두 변수의 주소값의 차(0x8-(-0x2c))는 0x34, 즉 이진수로 52byte만큼 차이난다.<br>
+                            따라서 입력을 받을 때 52바이트 만큼 입력을 하고 0xcafebabe를 입력하면 key값이 0xcafebabe되서 쉘을 딸 수 있다.<br>
+                            <img src="..\..\images\Systemhacking\Pwnable\bof.GIF" referrerpolicy="no-referrer" alt="bof">
+                        </p>
+                    </div>
+
+                </article>
+            </main>
+
+        </div> <!-- end s-content -->
+
+        <!-- footer
+        ================================================== -->
+        <footer class="s-footer footer">
+            <div class="row">
+                <div class="column large-full footer__content">
+                    <div class="footer__copyright">
+                        <span>© Copyright Typerite 2019</span>
+                        <span>Design by <a href="https://www.styleshout.com/">StyleShout</a></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"></a>
+        </footer>
+
+    </div> <!-- end s-wrap -->
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/plugins.js"></script>
+    <script src="../../js/main.js"></script>
+
+</body>
+
+</html>
