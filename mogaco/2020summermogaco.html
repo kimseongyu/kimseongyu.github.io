@@ -594,7 +594,8 @@
                         </ul>
                         <br>
                         <p><strong>데이터독립성</strong></p>
-                        <p>지속적으로 증가하는 유지보수 비용을 절감하고 데이터 복잡도를 낮추며 중복된 데이터를 줄이고 DB에 대한 사용자의 View와 DB가 실제 표현되는 View를 분리하여 변경 간섭을 주이는 것이 핵심 목적
+                        <p>지속적으로 증가하는 유지보수 비용을 절감하고 데이터 복잡도를 낮추며 중복된 데이터를 줄이고 DB에 대한 사용자의 View와 DB가 실제 표현되는 View를 분리하여
+                            변경 간섭을 주이는 것이 핵심 목적
                         </p>
                         <br>
                         <p><strong>ANSI-SPARC의 3-Level Database Architecture</strong></p>
@@ -629,14 +630,15 @@
                         <ul>
                             <li>DDL 컴파일러 : DDL로 명세된 스키마를 내부 형태 즉, 메타데이터로 처리하여 시스템 카탈로그에 저장</li>
                             <li>질의어 처리기 : 일반 사용자가 제출한 고급 질의문을 검사하고 파싱해서 컴파일한다.</li>
-                            <li>DML 예비 컴파일러 : 응용 프로그램에 삽입된 DML명령문을 추출하고, 추출된 DML 명령문은 데이터베이스 접근을 위한 목적코드로 컴파일 되도록 DML컴파일러에 보내짐</li>
+                            <li>DML 예비 컴파일러 : 응용 프로그램에 삽입된 DML명령문을 추출하고, 추출된 DML 명령문은 데이터베이스 접근을 위한 목적코드로 컴파일 되도록
+                                DML컴파일러에 보내짐</li>
                             <li>DML 컴파일러 : 넘겨받은 DML 명령어를 파싱하고 컴파일하여 목적코드를 생성함</li>
                             <li>런타임 데이터베이스 처리기 : 실행시간에 데이터베이스 접근을 관리</li>
                             <li>트랜잭션 관리자 : 데이터베이스에 접근하는 과정하는 과정에서 무결성 제약조건의 만족여부, 사용자의 권한 검사 등 체크</li>
                             <li>저장 데이터 관리자 : 디스크에 저장되어 있는 사용자 데이터베이스나 카탈로그 접근을 책임짐</li>
                         </ul>
                     </div>
-                    
+
                     <hr>
 
                     <div class="content__page-header entry__header" id="seventh">
@@ -655,7 +657,7 @@
                     </div>
 
                     <hr>
-                    
+
                     <div class="content__page-header entry__header">
                         <h1 class="display-1 entry__title">
                             모각코 7회
@@ -684,7 +686,7 @@
                             <li>연합 규칙 : X -&gt; Y 이고, Y -&gt; Z 이면, X -&gt; YZ 이다.</li>
                             <li>분해 규칙 : X -&gt; YZ 이면, X -&gt;Y이고, X -&gt; Z 이다.</li>
                             <li>의사이행 규칙 : X -&gt; Y 이고, YW -&gt; Z이면, XW -&gt; Z 이다.</li>
-                    
+
                         </ul>
                         <br>
                         <p><strong>정규화를 적용한 데이터베이스 설계</strong></p>
@@ -693,8 +695,10 @@
                             <li>2차 정규화 : 함수의 종속에서 부분 함수 종속이 존재할 때 두개의 테이블로 분할함으로써 2차 정규형 테이블을 도출한다.</li>
                             <li>3차 정규화 : 이행 함수 종속이 존재할 때 두 개의 테이블로 분할함으로써 3차 정규형 테이블을 도출한다.</li>
                             <li>보이스-코드 정규화 : 테이블을 보이스-코드 정규형 테이블로 도출한다.</li>
-                            <li>4차 정규화 : 한 릴레이션에 둘 이상의 종속발생 시 이를 제거하는 과정으로 A와 B가 연광성이 있고 A와 C가 연관성이 있을 때 B와 C가 연광성이 없을 때 발생한다.</li>
-                            <li>5차 정규화 : 관계에 존재하는 모든 조인 종속이 후보키를 통해서만 만족되는 경우로 A와 B가 연관성이 있고 B와 C가 연관성이 있고 C와 A가 연관성이 있을 때 A B C가 한꺼번에 연관성이
+                            <li>4차 정규화 : 한 릴레이션에 둘 이상의 종속발생 시 이를 제거하는 과정으로 A와 B가 연광성이 있고 A와 C가 연관성이 있을 때 B와 C가 연광성이 없을 때
+                                발생한다.</li>
+                            <li>5차 정규화 : 관계에 존재하는 모든 조인 종속이 후보키를 통해서만 만족되는 경우로 A와 B가 연관성이 있고 B와 C가 연관성이 있고 C와 A가 연관성이 있을
+                                때 A B C가 한꺼번에 연관성이
                                 존재하지 않을 때 발생한다.</li>
                         </ol>
                         <br>
@@ -721,7 +725,7 @@
                                     <li>응용 애플리케이션 : 로직을 구사하는 방법을 변경함으로써 성능을 향상</li>
                                 </ul>
                             </li>
-                    
+
                         </ul>
                         <br>
                         <p><strong>반정규화의 실제(기법)</strong></p>
@@ -733,7 +737,8 @@
                             <li>파생칼럼 추가 : 미라값을 계산하여 칼럼에 보관</li>
                             <li>이력 테이블 칼럼 추가 : 기능성 칼럼(최근 값 여부, 시작과 종료일자 등)을 추가</li>
                             <li>PK에 의한 칼럼 추가 : PK안에 데이터가 존재하지만 성능향상을 위해 일반속성으로 포함하는 방법</li>
-                            <li>응용시스템 오동작을 위한 컬럼 추가 : 데이터를 처리하다가 잘못 처리하여 원래 값으로 복구하기 원하는 경우 이전 데이터를 임시적으로 이전 데이터를 임시적으로 중복하여 보관하는 기법</li>
+                            <li>응용시스템 오동작을 위한 컬럼 추가 : 데이터를 처리하다가 잘못 처리하여 원래 값으로 복구하기 원하는 경우 이전 데이터를 임시적으로 이전 데이터를 임시적으로
+                                중복하여 보관하는 기법</li>
                             <li>중복관계 추가 : 경로를 단축하기 위해 추가적인 관계를 맺는 방버</li>
                         </ul>
                         <br>
@@ -760,12 +765,12 @@
                     </div>
                     <div class="entry__content">
                         <p>
-                            백준 17298문제와 topcit 기술영역 데이터 이해와 활용의 정규화와 반정규화를 공부할 예정이다.
+                            백준 17298문제와 topcit 기술영역 데이터 이해와 활용의 데이터베이스 품질과 표준화를 공부할 예정이다.
                         </p>
                     </div>
 
                     <hr>
-                    
+
                     <div class="content__page-header entry__header">
                         <h1 class="display-1 entry__title">
                             모각코 8회
@@ -777,10 +782,100 @@
                     </div>
                     <div class="entry__content">
                         <a class="pgn__num" href="../Algorithm/Baekjoon/17298.html">백준 17298번</a><br>
-                        채우기
+                        <h3>데이터베이스 품질과 표준화</h3>
+                        <p><strong>데이터 품질관리 프레임워크</strong></p>
+                        <figure>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th style='text-align:center;'>&nbsp;</th>
+                                        <th style='text-align:center;'>데이터 값</th>
+                                        <th style='text-align:center;'>데이터 구조</th>
+                                        <th style='text-align:center;'>데이터 관리 프로세스</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style='text-align:center;'>CIO/EDA<br>(개괄적 관점)</td>
+                                        <td style='text-align:center;'>&nbsp;</td>
+                                        <td style='text-align:center;'>데이터 관리 정책</td>
+                                        <td style='text-align:center;'>&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td style='text-align:center;'>DA<br>(개념적 관점)</td>
+                                        <td style='text-align:center;'>표준 데이터</td>
+                                        <td style='text-align:center;'>개념 데이터 모델<br>데이터 참조 모델</td>
+                                        <td style='text-align:center;'>데이터 표준관리<br>요구사항 관리</td>
+                                    </tr>
+                                    <tr>
+                                        <td style='text-align:center;'>Modeler<br>(논리적 관점)</td>
+                                        <td style='text-align:center;'>모델 데이터</td>
+                                        <td style='text-align:center;'>논리 데이터 모델</td>
+                                        <td style='text-align:center;'>데이터 모델 관리<br>데이터 흐름 관리</td>
+                                    </tr>
+                                    <tr>
+                                        <td style='text-align:center;'>DBA<br>(물리적 관점)</td>
+                                        <td style='text-align:center;'>관리 데이터</td>
+                                        <td style='text-align:center;'>물리 데이터 모델<br>데이터 베이스</td>
+                                        <td style='text-align:center;'>DB관리<br>DB보안관리</td>
+                                    </tr>
+                                    <tr>
+                                        <td style='text-align:center;'>사용자<br>(운용적 관점)</td>
+                                        <td style='text-align:center;'>업무 데이터</td>
+                                        <td style='text-align:center;'>사용자 뷰</td>
+                                        <td style='text-align:center;'>데이터 활용 관리</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </figure>
+                        <br>
+                        <p><strong>데이터 값</strong></p>
+                        <ul>
+                            <li>표준 데이터 : 공통된 형식과 내용으로 정의하여 사용하는 표준 관련 데이터</li>
+                            <li>모델 데이터 : 데이터 모델을 운용, 관리하는데 필요한 데이터</li>
+                            <li>관리 데이터 : DB를 효과적으로 운영, 관리하는데 필요한 데이터</li>
+                            <li>업무 데이터 : 기관이나 기업의 업무 및 비즈니스를 수행하는데 필요한 데이터</li>
+                        </ul>
+                        <br>
+                        <p><strong>데이터 구조</strong></p>
+                        <ul>
+                            <li>개념 데이터 모델 : 업무 요건을 충족하는 데이터의 주제영역, 핵심 엔터티, 핵심 관계를 정의한 모델</li>
+                            <li>데이터 참조 모델 : 업무 영역별, 주제 영역별로 표준 데이터 집합과 관리 항목들을 정의한 모델</li>
+                            <li>논리 데이터 모델 : 논리적인 데이터 집합, 관리 항목, 관계를 정의한 모델</li>
+                            <li>물리 데이터 모델 : DBMS의 특성과 성능을 고려하여 논리 데이터 모델을 구체화시킨 모델</li>
+                            <li>데이터베이스 : 물리 모델을 구현한 결과물이며 구축된 실제 데이터가 저장되는 데이터 저장소</li>
+                            <li>사용자 뷰 : 데이터를 제공하는 정보시스템상의 화면이나 출력물</li>
+                        </ul>
+                        <br>
+                        <p><strong>데이터 관리 프로세스</strong></p>
+                        <ul>
+                            <li>데이터 표준 관리 : 데이터를 정제하고 개선하는 활동</li>
+                            <li>요구사항 관리 : 사용자의 요구를 수집하고 분류하여 반영하는 작업</li>
+                            <li>데이터 모델 관리 : 데이터 모델을 유지하는 작업</li>
+                            <li>데이터 흐름 관리 : DB에 저장하고 가공하는 과정을 관리하는 작업</li>
+                            <li>DB 관리 : DB를 안정적으로 운영, 관리하는데 필요한 작업</li>
+                            <li>DB 보안 관리 : 허가되지 않은 일련의 행위로부터 안전하게 보호하는 작업</li>
+                            <li>데이터 활용 관리 : 품질을 측정하고 품질 미충족의 원인을 분석하는 작업</li>
+                        </ul>
+                        <br>
+                        <p><strong>데이터 품질관리 성숙모형</strong></p>
+                        <p>1단계에서부터 5단계로 정의됨, 성숙수준이 높을수록 체계적이고 정교한 관리가 수행됨을 의미함</p>
+                        <br>
+                        <p><strong>데이터 표준화</strong></p>
+                        <p>데이터 정보 요소에 대해 명칭, 정의, 형식, 규칙에 대한 원칙을 수립하여 이를 전사적으로 적용하는 것</p>
+                        <br>
+                        <p><strong>데이터 표준 정의</strong></p>
+                        <ul>
+                            <li>표준 단어의 도출 전체 개요 : 모든 용어를 단어 단위로 분할하여 도출함</li>
+                            <li>단어 분할 : 수집된 용어를 업무상 사용되며 일정한 의미를 갖고 있는 최소 단위의 단어로 분할</li>
+                            <li>이음동의어 처리 : 의미가 동일한 단어들에 대해 하나의 대표 단어를 표준으로 선정함</li>
+                            <li>표준 도메인 사전 도출 : 각 속성은 임의의 도메인에 할당되어야 하며, 하나 이상의 도메인에 복수로 할당될 수 없음</li>
+                            <li>표준 코드 사전 도출 : 사용되고 있는 모든 코드들을 수집하여 동일 코드를 파악하고 통합하여 표준 코드를 정의함</li>
+                            <li>표준 용어 사전 도출 : 추출된 표준 단어를 조합하여 표준 용어를 생성함</li>
+                        </ul>
                     </div>
 
-                    </article>
+                </article>
             </main>
 
         </div> <!-- end s-content -->
