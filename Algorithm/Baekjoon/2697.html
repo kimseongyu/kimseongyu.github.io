@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>2020 Algorithm - sun's blog</title>
+    <meta name="description" content="Algorithm">
+    <meta name="author" content="kim seon gyu">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/vendor.css">
+    <link rel="stylesheet" href="../../css/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="../../js/modernizr.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+
+</head>
+
+<body class="ss-bg-white">
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader" class="dots-fade">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <div id="top" class="s-wrap site-wrapper">
+
+        <!-- site header
+        ================================================== -->
+        <header class="s-header header">
+
+            <div class="header__top">
+                <div class="header__logo">
+                    <a class="site-logo" href="../../index.html">
+                        <img src="../../images/logo.svg" alt="Homepage">
+                    </a>
+                </div>
+            </div>
+
+            <nav class="header__nav-wrap">
+
+                <ul class="header__nav">
+                    <li><a href="../../index.html" title="">Home</a></li>
+                    <li class="has-children">
+                        <a href="#0" title="">Categories</a>
+                        <ul class="sub-menu">
+                        <li><a href="../../mogaco/mogaco.html">모각코</a></li>
+                        <li><a href="../../everystudy/everydaystudy.html">매일매일스터디</a></li>
+                        <li class="current"><a href="../../Algorithm/algorithm.html">알고리즘</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-children">
+                        <a href="#0" title="">Blog Posts</a>
+                        <ul class="sub-menu">
+                        <li><a href="../../Systemhacking/Systemhacking.html">Systemhacking</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../../page-about.html" title="">About</a></li>
+                </ul> <!-- end header__nav -->
+
+                <ul class="header__social">
+                    <li class="ss-facebook">
+                        <a href="https://www.facebook.com/profile.php?id=100010493671942">
+                            <span class="screen-reader-text">Facebook</span>
+                        </a>
+                    </li>
+                    <li class="ss-twitter">
+                        <a href="#0">
+                            <span class="screen-reader-text">Twitter</span>
+                        </a>
+                    </li>
+                    <li class="ss-github">
+                        <a href="https://github.com/kimseongyu">
+                            <span class="screen-reader-text">Github</span>
+                        </a>
+                    </li>
+                    <li class="ss-naver">
+                        <a href="https://blog.naver.com/kskksk0925">
+                            <span class="screen-reader-text">Naver</span>
+                        </a>
+                    </li>
+                </ul>
+
+            </nav> <!-- end header__nav-wrap -->
+
+        </header> <!-- end s-header -->
+
+
+        <!-- site content
+        ================================================== -->
+        <div class="s-content content">
+            
+            <main class="row content__page">
+                
+                <article class="column large-full entry format-gallery">
+                    
+                    <div class="content__page-header entry__header">
+                        <h1 class="display-1 entry__title">
+                        2697번 다음수 구하기
+                        </h1>
+                        <ul class="entry__header-meta">
+                            <li class="contents">Algorithm</li>
+                            <li class="contents">Python</li>
+                            <li class="date">Date : 2020/09/09</li>
+                            <li class="contents"><a href="https://www.acmicpc.net/problem/2697">https://www.acmicpc.net/problem/2697</a></li>
+                        </ul>
+                    </div>
+                    <div class="entry__content">
+                        <p>
+                            문제요약<br>
+                            어떤 수 A가 주어졌을 때, A의 다음수를 구하는 프로그램을 작성하시오.<br>
+                            A의 다음수는 A와 구성이 같으면서, A보다 큰 수 중에서 가장 작은 수 이다.
+                        </p>
+                        <pre class="prettyprint prettyprinted">
+                            <code lang='Python'>
+    def func(n):
+    a = -1
+    for i in range(len(n)-2, -1, -1):
+        if n[i] < n[i+1] :
+            a = i
+            break
+    
+    if a == -1 :
+        return "BIGGEST"
+
+    b = n.index(max(n[a+1:]))
+    for i in range(len(n)-1, a+1, -1):
+        if n[a] < n[i] < n[b] :
+            b = i
+    
+    n = swap(n, a, b)
+    n = n[:a+1] + ''.join(sorted(n[a+1:]))
+    return n
+
+def swap(c, i, j):
+    c = list(c)
+    c[i], c[j] = c[j], c[i]
+    return ''.join(c)
+
+def main():
+    n = int(input())
+
+    for _ in range(0, n):
+        num = input()
+        print(func(num))
+
+if __name__ == '__main__':
+    main()
+                            </code>
+                        </pre>
+                        <p>
+                            뒷자리의 수보다 작은 앞자리의 수가 나올 때까지 탐색하고 없으면 가장 큰 수 임을 판별하고
+                            작은 앞자리의 수의 뒷에 수 중에 앞자리의 수보다 크면서 가장 작은 수를 찾아
+                            서로 자리를 바꿔준 후 뒷의 모든 수들을 정렬시켜서 수를 만들어 주었다.
+                            <img src='../../images/Algorithm/Baekjoon/solve_2697.GIF' alt='solve' referrerPolicy='no-referrer' />
+                        </p>
+                    </div>
+                </article>
+            </main>
+
+        </div> <!-- end s-content -->
+
+        <!-- footer
+        ================================================== -->
+        <footer class="s-footer footer">
+            <div class="row">
+                <div class="column large-full footer__content">
+                    <div class="footer__copyright">
+                        <span>© Copyright Typerite 2019</span> 
+                        <span>Design by <a href="https://www.styleshout.com/">StyleShout</a></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"></a>
+            </div>
+        </footer>
+
+    </div> <!-- end s-wrap -->
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/plugins.js"></script>
+    <script src="../../js/main.js"></script>
+
+</body>
+</html>
