@@ -23,10 +23,10 @@ export const Navigation = () => {
           Tech
         </Link>
         <Link
-          href="/wasm"
+          href="/projects"
           className="text-gray-600 hover:text-blue-600 transition-colors"
         >
-          Wasm Labs
+          Projects
         </Link>
       </div>
     </nav>
