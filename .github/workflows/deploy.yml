@@ -33,6 +33,25 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Install wasm-pack
+        run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+
+      - name: Checkout external project
+        uses: actions/checkout@v4
+        with:
+          repository: kimseongyu/3d-fireworks-simulation
+          path: temp-fireworks
+
+      - name: Build external project
+        run: |
+          cd temp-fireworks
+          # Inject static export config and base path
+          sed -i "s/const nextConfig: NextConfig = {/const nextConfig: NextConfig = { output: 'export', basePath: '\/projects\/3d-fireworks-simulation',/" next.config.ts
+          npm ci
+          npm run build
+          mkdir -p ../out/projects/3d-fireworks-simulation
+          cp -r out/* ../out/projects/3d-fireworks-simulation/
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
