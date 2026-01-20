@@ -6,5 +6,13 @@
     "description": "3D 불꽃놀이 시뮬레이션입니다. 불꽃놀이를 배치하여 원하는 대로 불꽃놀이를 즐길 수 있습니다.",
     "demo": "https://kimseongyu.github.io/projects/3d-fireworks-simulation/",
     "repository": "https://github.com/kimseongyu/3d-fireworks-simulation/"
+  },
+  {
+    "project": "Github Blog",
+    "image": "/projects/Github-Blog.png",
+    "skill": "Next.js / GitHub Actions",
+    "description": "Next.js와 GitHub Actions로 만든 개인 블로그입니다. 마크다운 파일을 작성하면 자동으로 배포됩니다.",
+    "demo": "https://kimseongyu.github.io/",
+    "repository": "https://github.com/kimseongyu/kimseongyu.github.io"
   }
 ]
