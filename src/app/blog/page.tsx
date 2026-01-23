@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { getTechPosts } from "@/lib/techPosts";
+import { getBlogPosts } from "@/lib/blogPosts";
 
 export default async function Tech() {
-  const posts = await getTechPosts();
+  const posts = await getBlogPosts();
 
   return (
     <div className="a4-container">
@@ -14,8 +14,20 @@ export default async function Tech() {
           <ul className="space-y-4">
             {posts.map((post) => (
               <li key={post.slug} className="border-b border-gray-200 pb-4">
+                <div className="flex items-center gap-2 mb-1">
+                  {post.tag === "open source" && (
+                    <span className="bg-purple-100 text-purple-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                      Open Source
+                    </span>
+                  )}
+                  {post.tag === "tech" && (
+                    <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                      Blog
+                    </span>
+                  )}
+                </div>
                 <Link
-                  href={`/tech/${post.slug}`}
+                  href={`/blog/${post.slug}`}
                   className="text-blue-600 hover:underline text-lg font-medium"
                 >
                   {post.title}
