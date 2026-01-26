@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { getBlogPosts } from "@/lib/blogPosts";
+import { getPosts } from "@/lib/posts";
 
 export default async function Tech() {
-  const posts = await getBlogPosts();
+  const posts = await getPosts();
 
   return (
     <div className="a4-container">
@@ -22,12 +22,12 @@ export default async function Tech() {
                   )}
                   {post.tag === "tech" && (
                     <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                      Blog
+                      Posts
                     </span>
                   )}
                 </div>
                 <Link
-                  href={`/blog/${post.slug}`}
+                  href={`/posts/${post.slug}`}
                   className="text-blue-600 hover:underline text-lg font-medium"
                 >
                   {post.title}

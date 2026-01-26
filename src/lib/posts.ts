@@ -9,34 +9,34 @@ import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeExternalLinks from "rehype-external-links";
 
-export interface BaseBlogPostMeta {
+export interface BasePostMeta {
   slug: string;
   title: string;
   date?: string;
 }
 
-export interface BlogPostMetaTech extends BaseBlogPostMeta {
+export interface PostMetaTech extends BasePostMeta {
   tag: "tech";
   repository?: string;
 }
 
-export interface BlogPostMetaOpenSource extends BaseBlogPostMeta {
+export interface PostMetaOpenSource extends BasePostMeta {
   tag: "open source";
   issue?: string;
   pr?: string;
 }
 
-export type BlogPostMeta = BlogPostMetaTech | BlogPostMetaOpenSource;
+export type PostMeta = PostMetaTech | PostMetaOpenSource;
 
-const blogDir = path.join(process.cwd(), "posts", "blog");
+const postsDir = path.join(process.cwd(), "posts", "posts");
 
-export async function getBlogPosts(): Promise<BlogPostMeta[]> {
-  const files = await fs.readdir(blogDir);
+export async function getPosts(): Promise<PostMeta[]> {
+  const files = await fs.readdir(postsDir);
   const mdFiles = files.filter((f) => f.endsWith(".md"));
   const posts = await Promise.all(
     mdFiles.map(async (fileName) => {
       const slug = fileName.replace(/\.md$/, "");
-      const fullPath = path.join(blogDir, fileName);
+      const fullPath = path.join(postsDir, fileName);
       const file = await fs.readFile(fullPath, "utf8");
       const { data } = matter(file);
       const title = (data as { title?: string }).title ?? slug;
@@ -51,7 +51,7 @@ export async function getBlogPosts(): Promise<BlogPostMeta[]> {
           tag: "open source",
           issue: (data as { issue?: string }).issue,
           pr: (data as { pr?: string }).pr,
-        } as BlogPostMetaOpenSource;
+        } as PostMetaOpenSource;
       } else {
         return {
           slug,
@@ -59,7 +59,7 @@ export async function getBlogPosts(): Promise<BlogPostMeta[]> {
           date,
           tag: "tech",
           repository: (data as { repository?: string }).repository,
-        } as BlogPostMetaTech;
+        } as PostMetaTech;
       }
     }),
   );
@@ -72,10 +72,10 @@ export async function getBlogPosts(): Promise<BlogPostMeta[]> {
   });
 }
 
-export async function getBlogPostHtml(
+export async function getPostHtml(
   slug: string,
-): Promise<{ meta: BlogPostMeta; html: string } | null> {
-  const fullPath = path.join(blogDir, `${slug}.md`);
+): Promise<{ meta: PostMeta; html: string } | null> {
+  const fullPath = path.join(postsDir, `${slug}.md`);
   try {
     const file = await fs.readFile(fullPath, "utf8");
     const { content, data } = matter(file);
@@ -94,7 +94,7 @@ export async function getBlogPostHtml(
     const date = (data as { date?: string }).date;
     const rawTag = (data as { tag?: string }).tag;
 
-    let meta: BlogPostMeta;
+    let meta: PostMeta;
     if (rawTag === "open source") {
       meta = {
         slug,
@@ -123,8 +123,8 @@ export async function getBlogPostHtml(
   }
 }
 
-export async function getAllBlogSlugs(): Promise<string[]> {
-  const files = await fs.readdir(blogDir);
+export async function getAllPostSlugs(): Promise<string[]> {
+  const files = await fs.readdir(postsDir);
   return files
     .filter((f) => f.endsWith(".md"))
     .map((f) => f.replace(/\.md$/, ""));

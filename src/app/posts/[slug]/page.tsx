@@ -1,19 +1,19 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getAllBlogSlugs, getBlogPostHtml } from "@/lib/blogPosts";
+import { getAllPostSlugs, getPostHtml } from "@/lib/posts";
 
 export async function generateStaticParams() {
-  const slugs = await getAllBlogSlugs();
+  const slugs = await getAllPostSlugs();
   return slugs.map((slug) => ({ slug }));
 }
 
-export default async function BlogPostPage({
+export default async function PostPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const result = await getBlogPostHtml(slug);
+  const result = await getPostHtml(slug);
   if (!result) {
     notFound();
   }
@@ -24,7 +24,7 @@ export default async function BlogPostPage({
     <div className="a4-container landscape">
       <div className="font-sans py-8">
         <div className="mb-6">
-          <Link href="/blog" className="text-blue-600 hover:underline">
+          <Link href="/posts" className="text-blue-600 hover:underline">
             ← 목록으로 돌아가기
           </Link>
         </div>

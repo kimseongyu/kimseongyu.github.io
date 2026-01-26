@@ -17,10 +17,10 @@ export const Navigation = () => {
           Home
         </Link>
         <Link
-          href="/blog"
+          href="/posts"
           className="text-gray-600 hover:text-blue-600 transition-colors"
         >
-          Blog
+          Posts
         </Link>
         <Link
           href="/projects"
