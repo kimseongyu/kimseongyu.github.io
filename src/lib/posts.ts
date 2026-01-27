@@ -8,6 +8,7 @@ import rehypeStringify from "rehype-stringify";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeExternalLinks from "rehype-external-links";
+import rehypeHighlight from "rehype-highlight";
 
 export interface BasePostMeta {
   slug: string;
@@ -88,6 +89,7 @@ export async function getPostHtml(
         target: "_blank",
         rel: ["noopener", "noreferrer"],
       })
+      .use(rehypeHighlight)
       .use(rehypeStringify)
       .process(content);
     const title = (data as { title?: string }).title ?? slug;

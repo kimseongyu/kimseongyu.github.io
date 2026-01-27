@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getAllPostSlugs, getPostHtml } from "@/lib/posts";
+import "highlight.js/styles/github-dark.css";
 
 export async function generateStaticParams() {
   const slugs = await getAllPostSlugs();

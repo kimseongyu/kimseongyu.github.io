@@ -14,11 +14,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">
-        <header>
+      <body className="antialiased min-h-screen flex flex-col">
+        <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200">
           <Navigation />
         </header>
-        <main>{children}</main>
+        <main className="flex-1 flex justify-center pt-20 pb-10 px-4">
+          {children}
+        </main>
       </body>
     </html>
   );
