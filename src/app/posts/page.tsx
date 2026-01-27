@@ -7,7 +7,7 @@ export default async function Tech() {
   return (
     <div className="a4-container">
       <div className="font-sans py-8">
-        <h1 className="text-4xl font-bold mb-8">Tech</h1>
+        <h1 className="text-4xl font-bold mb-8">Posts</h1>
         {posts.length === 0 ? (
           <p className="text-gray-500">아직 게시물이 없습니다.</p>
         ) : (
@@ -22,7 +22,7 @@ export default async function Tech() {
                   )}
                   {post.tag === "tech" && (
                     <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                      Posts
+                      Tech
                     </span>
                   )}
                 </div>
