@@ -37,7 +37,7 @@ export default async function Projects() {
                 <p className="text-gray-700 text-base mb-6 flex-grow leading-relaxed">
                   {project.description}
                 </p>
-                
+
                 <div className="flex gap-4 mt-auto pt-4 border-t border-gray-100">
                   {project.demo && (
                     <Link
@@ -57,6 +57,16 @@ export default async function Projects() {
                       className="flex-1 text-center py-2 px-4 bg-gray-800 text-white rounded hover:bg-gray-900 transition-colors text-sm font-semibold"
                     >
                       Repository
+                    </Link>
+                  )}
+                  {project.link && (
+                    <Link
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 text-center py-2 px-4 bg-gray-800 text-white rounded hover:bg-gray-900 transition-colors text-sm font-semibold"
+                    >
+                      Link
                     </Link>
                   )}
                 </div>
