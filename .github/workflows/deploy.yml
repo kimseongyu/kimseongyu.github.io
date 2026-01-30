@@ -36,21 +36,37 @@ jobs:
       - name: Install wasm-pack
         run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 
-      - name: Checkout external project
+      # Fireworks
+      - name: Checkout external project (Fireworks)
         uses: actions/checkout@v4
         with:
           repository: kimseongyu/3d-fireworks-simulation
           path: temp-fireworks
 
-      - name: Build external project
+      - name: Build external project (Fireworks)
         run: |
           cd temp-fireworks
-          # Inject static export config and base path
           sed -i "s/const nextConfig: NextConfig = {/const nextConfig: NextConfig = { output: 'export', basePath: '\/projects\/3d-fireworks-simulation',/" next.config.ts
           npm ci
           npm run build
           mkdir -p ../out/projects/3d-fireworks-simulation
           cp -r out/* ../out/projects/3d-fireworks-simulation/
+
+      # AVALON
+      - name: Checkout external project (AVALON)
+        uses: actions/checkout@v4
+        with:
+          repository: kimseongyu/AVALON
+          path: temp-avalon
+
+      - name: Build external project (AVALON)
+        run: |
+          cd temp-avalon/frontend
+          sed -i "s/const nextConfig: NextConfig = {/const nextConfig: NextConfig = {basePath: '\/projects\/avalon',/" next.config.ts
+          npm ci
+          NEXT_PUBLIC_API_URL=http://localhost:3001/api NEXT_PUBLIC_MSW_WORKER_URL=/projects/avalon/mockServiceWorker.js npm run build
+          mkdir -p ../../out/projects/avalon
+          cp -r out/* ../../out/projects/avalon/
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

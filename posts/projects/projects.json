@@ -2,17 +2,53 @@
   {
     "project": "3D fireworks simulation",
     "image": "/projects/3d-fireworks-simulation.png",
-    "skill": "React / Zustand / Three / Wasm(Rust)",
+    "skill": "TypeScript / React / Zustand / Three.js / Wasm(Rust)",
     "description": "3D 불꽃놀이 시뮬레이션입니다. 불꽃놀이를 배치하여 원하는 대로 불꽃놀이를 즐길 수 있습니다.",
     "demo": "https://kimseongyu.github.io/projects/3d-fireworks-simulation/",
     "repository": "https://github.com/kimseongyu/3d-fireworks-simulation/"
   },
   {
+    "project": "AVALON",
+    "image": "/projects/AVALON.png",
+    "skill": "Typescript / Next.js / Zustand",
+    "description": "AI를 활용한 문서 기반의 시나리오 테스트 생성 자동화 프로그램입니다.",
+    "demo": "https://kimseongyu.github.io/projects/avalon/",
+    "repository": "https://github.com/SKALA-AXcalibur/AVALON"
+  },
+  {
     "project": "Github Blog",
     "image": "/projects/Github-Blog.png",
-    "skill": "Next.js / GitHub Actions",
+    "skill": "TypeScript / Next.js / GitHub Actions",
     "description": "Next.js와 GitHub Actions로 만든 개인 블로그입니다. 마크다운 파일을 작성하면 자동으로 배포됩니다.",
     "demo": "https://kimseongyu.github.io/",
     "repository": "https://github.com/kimseongyu/kimseongyu.github.io"
+  },
+  {
+    "project": "오행시(오늘 행정반 소식)",
+    "image": "/projects/OhHaengSi.png",
+    "skill": "TypeScript / React / SCSS",
+    "description": "국방부 주관 OSAM 해커톤에 참여하며 만든 행정반 업무를 분담하는 전자 게시판입니다.",
+    "repository": "https://github.com/osamhack2022-v2/WEB_OhHaengSi_Acrostic"
+  },
+  {
+    "project": "BinAIDA",
+    "image": "/projects/BinAIDA.png",
+    "skill": "LLVM / LLM / Binary Lifter / Static Analysis",
+    "description": "졸업 프로젝트로 AI를 활용하여 LLVM 기반의 바이너리 리프터 성능 향상을 시도한 프로젝트입니다.",
+    "link": "https://www.canva.com/design/DAG_5nMZ1gA/4Ix0M4ACjnphyR3h6JdjJw/view?utm_content=DAG_5nMZ1gA&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h4053f5bbf0"
+  },
+  {
+    "project": "Precise Leak Sanitizer",
+    "image": "/projects/PLsan.png",
+    "skill": "C++ / LLVM / Reference Counting",
+    "description": "미국 해외 연수 과정에서 소스 코드 내에서 메모리 누수가 발생하는 지점을 특정하는 도구를 개발했습니다.",
+    "repository": "https://github.com/hygoni/precise-leak-sanitizer"
+  },
+  {
+    "project": "BinQL",
+    "image": "/projects/BinQL.png",
+    "skill": "Ocaml / Binary Lifter / Static Analysis",
+    "description": "학부 연구생 프로젝트로 바이너리 파일 내 Indirect Jump 주소를 연산하는 도구를 만든 프로젝트입니다.",
+    "repository": "https://github.com/kimseongyu/BinQL"
   }
 ]
