@@ -1,0 +1,32 @@
+backend:
+  name: github
+  repo: kimseongyu/kimseongyu.github.io
+  branch: main
+
+local_backend: true
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "posts"
+    label: "Posts"
+    folder: "posts/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}"
+    commit_messages:
+      create: "feat: add post about {{title}}"
+      update: "feat: update post {{title}}"
+      delete: "feat: delete post {{title}}"
+      uploadMedia: "feat: upload {{path}}"
+      deleteMedia: "feat: delete {{path}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Tag", name: "tag", widget: "select", options: ["tech", "open source"] }
+      - { label: "Repository URL", name: "repository", widget: "string", required: false }
+      - { label: "Issue URL", name: "issue", widget: "string", required: false }
+      - { label: "PR URL", name: "pr", widget: "string", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
