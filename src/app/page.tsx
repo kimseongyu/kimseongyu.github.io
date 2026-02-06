@@ -69,6 +69,14 @@ export default function Home() {
               </Link>
               <span className={styles.headerSeparator}>|</span>
               <Link
+                href="https://kimseongyu.github.io/"
+                target="_blank"
+                className={styles.headerLink}
+              >
+                <span className={styles.headerLinkLabel}>Blog</span>
+              </Link>
+              <span className={styles.headerSeparator}>|</span>
+              <Link
                 href="https://www.linkedin.com/in/kimseongyu/"
                 target="_blank"
                 className={styles.headerLink}
