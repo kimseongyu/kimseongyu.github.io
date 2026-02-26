@@ -106,7 +106,7 @@ export default function Home() {
                   성능 최적화와 오픈소스 기여를 통해 사용자 경험 향상을 목표로
                   하고 있습니다. 단순히 기능을 구현하는 것을 넘어, 프레임워크의
                   내부 동작 원리를 파악하여 최적의 사용자 경험을 설계하는 데
-                  강점이 있습니다. Meta 오픈소스 프로젝트에 기여하며 로직을
+                  강점이 있습니다. 오픈소스 프로젝트들에 기여하며 로직을
                   개선하고 협업 경험을 쌓고 있습니다.
                 </p>
               </div>
@@ -115,6 +115,38 @@ export default function Home() {
             {/* Open Source */}
             <section>
               <h2 className={styles.sectionTitle}>Open Source</h2>
+              <div>
+                <div className={styles.itemHeader}>
+                  <h3 className={styles.itemTitle}>
+                    크로스 브라우저 환경에서 IME Composition 입력 문제 해결
+                  </h3>
+                  <Link
+                    href="https://github.com/facebook/lexical/pull/8121"
+                    target="_blank"
+                    className={styles.itemLink}
+                  >
+                    PR &rarr;
+                  </Link>
+                </div>
+                <p className={styles.itemMeta}>facebook/lexical</p>
+                <ul className={styles.bulletBox}>
+                  <li>
+                    첫 번째 문자에 포맷(Bold 등)이 적용된 경우, 특정
+                    브라우저에서 한글과 같은 조합형 문자 입력 시 문자가 사라지는
+                    크로스 브라우저 환경에서의 이슈를 해결했습니다.
+                  </li>
+                  <li>
+                    제어 문자 삽입 시 Selection Offset 불일치로 인해 브라우저가
+                    드래그 상태로 오인하여 첫 획을 덮어쓰는 원인을 분석하고
+                    수정했습니다.
+                  </li>
+                  <li>
+                    또한, 조합형 문자 입력을 위한 제어 문자 관리 로직을 추가하여
+                    한글 이용자의 사용자 경험을 향상시켰습니다.
+                  </li>
+                </ul>
+              </div>
+
               <div className={styles.itemStack}>
                 <div>
                   <div className={styles.itemHeader}>
@@ -140,41 +172,11 @@ export default function Home() {
                     <li>
                       CommonMark Spec을 분석하여, 강조 적용 여부를 결정하는
                       Delimiter Run 스캔과 스택 기반의 매칭 로직을 구현한
-                      Delimiter Algorithm을 도입하여 해결했습니다.
+                      Delimiter Algorithm을 도입했습니다.
                     </li>
                     <li>
-                      기존 로직을 전면 교체하여 표준 스펙 준수율을 높이고 파싱
+                      기존 로직을 교체를 통해 표준 스펙 준수율을 높이고 파싱
                       정확도를 개선했습니다.
-                    </li>
-                  </ul>
-                </div>
-
-                <div>
-                  <div className={styles.itemHeader}>
-                    <h3 className={styles.itemTitle}>
-                      Markdown 직렬화 과정의 포맷팅 버그 수정
-                    </h3>
-                    <Link
-                      href="https://github.com/facebook/lexical/pull/8085"
-                      target="_blank"
-                      className={styles.itemLink}
-                    >
-                      PR &rarr;
-                    </Link>
-                  </div>
-                  <p className={styles.itemMeta}>facebook/lexical</p>
-                  <ul className={styles.bulletBox}>
-                    <li>
-                      Markdown 직렬화 과정에서 최적화 로직으로 인해 Link와 포맷
-                      태그가 충돌하는 버그를 수정했습니다.
-                    </li>
-                    <li>
-                      불필요하게 복잡했던 형제 노드 탐색 로직을 직계 형제
-                      노드까지로 단순화했습니다.
-                    </li>
-                    <li>
-                      엣지 케이스 테스트 통과와 디버깅 결과를 통해 로직 단순화의
-                      타당성을 입증해 PR이 머지되었습니다.
                     </li>
                   </ul>
                 </div>
